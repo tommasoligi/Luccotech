@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucco Tech Pesaro - Soluzioni Informatiche</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #121212;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 40px 20px;
+            text-align: center;
+            background-color: #121212;
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .company-name {
+            font-size: 2.5rem;
+            color: #2ed166;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 60px 20px;
+        }
+
+        .services-grid {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .service-card {
+            background-color: #212c17;
+            border: 2px solid #15df37;
+            border-radius: 12px;
+            padding: 30px;
+            flex: 1;
+            min-width: 280px;
+            max-width: 350px;
+            text-align: center;
+        }
+
+        .service-card h2 {
+            color: #2ed166;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .service-card ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        .service-card ul li {
+            color: #fff;
+            padding: 10px 0;
+            font-size: 1.05rem;
+        }
+
+        .service-card p {
+            color: #fff;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 60px 20px;
+            background-color: #1a1a1a;
+        }
+
+        .contact-section h2 {
+            text-align: center;
+            color: #2ed166;
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #2ed166;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: inherit;
+            color: #333;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2ed166;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: #2ed166;
+            color: #121212;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #15df37;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0a0a0a;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-content p {
+            color: #fff;
+            margin: 8px 0;
+            font-size: 1rem;
+        }
+
+        .footer-tagline {
+            color: #2ed166;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+
+        .footer-copyright {
+            color: #888;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .company-name {
+                font-size: 1.8rem;
+            }
+
+            .logo {
+                width: 120px;
+                height: 120px;
+            }
+
+            .services-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .service-card {
+                max-width: 100%;
+                width: 100%;
+            }
+
+            .service-card h2 {
+                font-size: 1.5rem;
+            }
+
+            .contact-section h2 {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .company-name {
+                font-size: 1.5rem;
+            }
+
+            .logo {
+                width: 100px;
+                height: 100px;
+            }
+
+            header {
+                padding: 30px 15px;
+            }
+
+            .services-section,
+            .contact-section {
+                padding: 40px 15px;
+            }
+
+            .service-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo-container">
+            <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/3a626c88-1343-4d2d-9eff-9889d9319895" alt="Lucco Tech Pesaro Logo" class="logo">
+            <h1 class="company-name">Lucco Tech Pesaro</h1>
+        </div>
+    </header>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="container">
+            <div class="services-grid">
+                <!-- Prodotti Card -->
+                <div class="service-card">
+                    <h2>Prodotti</h2>
+                    <ul>
+                        <li>Computer &amp; Workstation</li>
+                        <li>Server</li>
+                        <li>Notebook</li>
+                        <li>Stampanti, Plotter e Fotocopiatrici</li>
+                    </ul>
+                </div>
+
+                <!-- Servizi Card -->
+                <div class="service-card">
+                    <h2>Servizi</h2>
+                    <ul>
+                        <li>Vendita e assistenza</li>
+                        <li>Noleggio hardware</li>
+                        <li>Installazione firewall</li>
+                        <li>Consulenza informatica</li>
+                        <li>Soluzioni IT per privati e aziende</li>
+                    </ul>
+                </div>
+
+                <!-- Realizzazione Siti Web Card -->
+                <div class="service-card">
+                    <h2>Realizzazione Siti Web</h2>
+                    <p>Creiamo siti web professionali su misura per la tua azienda o attività, con attenzione a design, sicurezza e visibilità online.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <h2>Contattaci</h2>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="messaggio">Messaggio</label>
+                    <textarea id="messaggio" name="messaggio" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Invia</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p><strong>Lucco Tech di Matteo Luchena</strong></p>
+            <p>Pesaro (PU)</p>
+            <p>Indirizzo: Via Mancini, 145</p>
+            <p>Partita IVA: 02828830410</p>
+            <p class="footer-tagline">Specialisti in informatica dal 2024</p>
+            <p class="footer-copyright">© 2025 Lucco Tech Pesaro – Soluzioni Informatiche</p>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Grazie per averci contattato! Ti risponderemo al più presto.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
