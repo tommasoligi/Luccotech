@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Lucco Tech Pesaro - Demo Negozio Computer</title>
+  <title>Lucco Tech Pesaro - Negozio Computer</title>
   <style>
     :root {
       --color-bg-primary: #121212;
@@ -114,18 +114,75 @@
       background: var(--color-btn-primary-hover);
       outline: none;
     }
-    .contact {
-      background: var(--color-card-bg);
-      border-radius: var(--radius-base);
-      padding: 24px;
-      margin-top: var(--space-24);
-      border: 1.5px dashed var(--color-btn-primary);
-      display: flex;
-      justify-content: center;
-    }
-    .contact-info {
-      display: none;
-    }
+     /* Contact Section */
+        .contact-section {
+            padding: 60px 20px;
+            background-color: #1a1a1a;
+        }
+
+        .contact-section h2 {
+            text-align: center;
+            color: #2ed166;
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #2ed166;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: inherit;
+            color: #333;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2ed166;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: #2ed166;
+            color: #121212;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #15df37;
+        }
     footer {
       text-align: center;
       padding: var(--space-12);
