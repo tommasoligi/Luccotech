@@ -34,23 +34,30 @@
       box-shadow:0 2px 8px 0 #0f08;
     }
     .hero {
-      text-align:center; padding:64px 16px 36px 16px;
+      text-align:center;
+      padding:64px 16px 36px 16px;
       background:linear-gradient(120deg,#0f0 0%,#101820 60%,#1de9b6 100%);
       animation:fadeIn 1.2s;
     }
-    @keyframes fadeIn {
-      from { opacity:0;}
-      to { opacity:1;}
-    }
     .hero h1 {
-      color:#101820; font-size:2.5rem; margin-bottom:18px;
+      color:#101820;
+      font-size:2.5rem;
+      margin-bottom:18px;
       text-shadow:0 2px 16px #0f08;
       letter-spacing:1px;
       animation:fadeInUp 1.2s;
     }
     .hero p {
-      color:#222; font-size:1.18rem; max-width:600px; margin:0 auto;
+      color:#222;
+      font-size:1.18rem;
+      max-width:600px;
+      margin:0 auto;
       animation:fadeInUp 1.5s;
+      line-height:1.6;
+    }
+    @keyframes fadeIn {
+      from { opacity:0;}
+      to { opacity:1;}
     }
     @keyframes fadeInUp {
       from { opacity:0; transform:translateY(30px);}
@@ -141,7 +148,11 @@
     <!-- Home Section -->
     <section class="hero" id="home-section">
       <h1>Soluzioni IT per privati e aziende</h1>
-      <p>Computer & Workstation, Server, Notebook, Stampanti, Plotter e Fotocopiatrici, Vendita e assistenza, Noleggio hardware, Installazione firewall, Consulenza informatica, Realizzazione Siti Web su misura.</p>
+      <p>
+        Computer & Workstation, Server, Notebook, Stampanti, Plotter e Fotocopiatrici,<br>
+        Vendita e assistenza, Noleggio hardware, Installazione firewall,<br>
+        Consulenza informatica, Realizzazione Siti Web su misura.
+      </p>
     </section>
     <!-- Prodotti/Servizi Section -->
     <section class="services" id="prodotti-section">
