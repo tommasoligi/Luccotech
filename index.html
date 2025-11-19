@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lucco Tech</title>
+  <style>
+    body { margin:0; font-family:sans-serif; background:#111; color:#eee; }
+    header { display:flex; align-items:center; justify-content:space-between; padding:16px 24px; background:#111; position:sticky; top:0; z-index:10; }
+    .logo { display:flex; align-items:center; }
+    .logo img { height:40px; margin-right:12px; }
+    nav { display:flex; gap:18px; }
+    nav a { color:#0f0; text-decoration:none; font-weight:bold; font-size:1rem; }
+    nav a.active, nav a:hover { text-decoration:underline; }
+    .container { max-width:1100px; margin:0 auto; }
+    .hero { text-align:center; padding:48px 16px 24px 16px; }
+    .hero h1 { color:#0f0; font-size:2.2rem; margin-bottom:12px; }
+    .hero p { color:#ccc; font-size:1.1rem; }
+    .services { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px; padding:32px 16px; }
+    .service-card { background:#181818; border-radius:10px; padding:24px; border:1px solid #222; }
+    .service-card h3 { color:#0f0; margin-top:0; }
+    .service-card p { color:#ccc; }
+    .contact-section { max-width:420px; margin:32px auto; background:#181818; border-radius:10px; padding:24px; border:1px solid #222; }
+    .contact-section h2 { color:#0f0; margin-top:0; }
+    .contact-section label { display:block; margin:12px 0 4px 0; color:#eee; }
+    .contact-section input, .contact-section textarea {
+      width:100%; padding:8px; border-radius:5px; border:1px solid #222; background:#222; color:#eee; margin-bottom:12px;
+    }
+    .contact-section button {
+      background:#0f0; color:#111; border:none; padding:10px 24px; border-radius:5px; font-weight:bold; cursor:pointer;
+      transition:background 0.2s;
+    }
+    .contact-section button:hover { background:#0c0; }
+    .success-message { color:#0f0; margin-top:10px; }
+    footer { background:#111; color:#888; text-align:center; padding:18px 8px; font-size:0.95rem; margin-top:32px; }
+    @media (max-width:600px) {
+      header { flex-direction:column; align-items:flex-start; padding:12px 8px; }
+      nav { gap:10px; margin-top:8px; }
+      .hero { padding:32px 8px 16px 8px; }
+      .services { grid-template-columns:1fr; padding:16px 4px; }
+      .service-card { padding:16px; }
+      .contact-section { padding:14px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/3a626c88-1343-4d2d-9eff-9889d9319895" alt="Lucco Tech Logo">
+      <span style="color:#0f0; font-size:1.3rem; font-weight:bold;">Lucco Tech</span>
+    </div>
+    <nav>
+      <a href="#" id="nav-home" class="active">Home</a>
+      <a href="#prodotti" id="nav-prodotti">Prodotti</a>
+      <a href="#contatti" id="nav-contatti">Contatti</a>
+    </nav>
+  </header>
+  <main id="main-content">
+    <!-- Home Section -->
+    <section class="hero" id="home-section">
+      <h1>Soluzioni IT per privati e aziende</h1>
+      <p>Computer & Workstation, Server, Notebook, Stampanti, Plotter e Fotocopiatrici, Vendita e assistenza, Noleggio hardware, Installazione firewall, Consulenza informatica, Realizzazione Siti Web su misura.</p>
+    </section>
+    <!-- Prodotti/Servizi Section -->
+    <section class="services" id="prodotti-section">
+      <div class="service-card">
+        <h3>Computer & Workstation</h3>
+        <p>Soluzioni affidabili per ogni esigenza professionale.</p>
+      </div>
+      <div class="service-card">
+        <h3>Server</h3>
+        <p>Server performanti per aziende di ogni dimensione.</p>
+      </div>
+      <div class="service-card">
+        <h3>Notebook</h3>
+        <p>Portatili per lavoro, studio e mobilità.</p>
+      </div>
+      <div class="service-card">
+        <h3>Stampanti, Plotter e Fotocopiatrici</h3>
+        <p>Dispositivi di stampa e copia per ogni ambiente.</p>
+      </div>
+      <div class="service-card">
+        <h3>Vendita e assistenza</h3>
+        <p>Supporto tecnico e commerciale dedicato.</p>
+      </div>
+      <div class="service-card">
+        <h3>Noleggio hardware</h3>
+        <p>Soluzioni flessibili per il noleggio di dispositivi IT.</p>
+      </div>
+      <div class="service-card">
+        <h3>Installazione firewall</h3>
+        <p>Sicurezza informatica per la tua rete aziendale.</p>
+      </div>
+      <div class="service-card">
+        <h3>Consulenza informatica</h3>
+        <p>Consulenza su misura per ottimizzare la tua infrastruttura IT.</p>
+      </div>
+      <div class="service-card">
+        <h3>Soluzioni IT per privati e aziende</h3>
+        <p>Progetti personalizzati per ogni esigenza.</p>
+      </div>
+      <div class="service-card">
+        <h3>Realizzazione Siti Web</h3>
+        <p>Creiamo siti web professionali su misura per la tua azienda o attività, con attenzione a design, sicurezza e visibilità online.</p>
+      </div>
+    </section>
+    <!-- Contatti Section -->
+    <section class="contact-section" id="contatti-section">
+      <h2>Contattaci</h2>
+      <form id="contact-form" autocomplete="off">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome" required>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+        <label for="messaggio">Messaggio</label>
+        <textarea id="messaggio" name="messaggio" rows="4" required></textarea>
+        <button type="submit">Invia</button>
+        <div class="success-message" id="success-message" style="display:none;">Messaggio inviato! Ti risponderemo al più presto.</div>
+      </form>
+    </section>
+  </main>
+  <footer>
+    &copy; 2025 Lucco Tech. Tutti i diritti riservati.
+  </footer>
+  <script>
+    // Navigazione semplice tra sezioni
+    function showSection(section) {
+      document.getElementById('home-section').style.display = section === 'home' ? 'block' : 'none';
+      document.getElementById('prodotti-section').style.display = section === 'prodotti' ? 'grid' : 'none';
+      document.getElementById('contatti-section').style.display = section === 'contatti' ? 'block' : 'none';
+      document.getElementById('nav-home').classList.toggle('active', section === 'home');
+      document.getElementById('nav-prodotti').classList.toggle('active', section === 'prodotti');
+      document.getElementById('nav-contatti').classList.toggle('active', section === 'contatti');
+      window.scrollTo(0,0);
+    }
+    document.getElementById('nav-home').onclick = function(e){ e.preventDefault(); showSection('home'); }
+    document.getElementById('nav-prodotti').onclick = function(e){ e.preventDefault(); showSection('prodotti'); }
+    document.getElementById('nav-contatti').onclick = function(e){ e.preventDefault(); showSection('contatti'); }
+    // Mostra solo la home all'avvio
+    showSection('home');
+
+    // Form di contatto (solo simulazione)
+    document.getElementById('contact-form').onsubmit = function(e){
+      e.preventDefault();
+      document.getElementById('success-message').style.display = 'block';
+      this.reset();
+      setTimeout(function(){
+        document.getElementById('success-message').style.display = 'none';
+      }, 4000);
+    }
+  </script>
+</body>
+</html>
