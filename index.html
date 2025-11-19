@@ -4,10 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lucco Tech</title>
+  <!-- AOS Animate On Scroll -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
   <style>
+    html { scroll-behavior: smooth; }
     body {
       margin:0; font-family:'Segoe UI',Arial,sans-serif; background:#101820; color:#eee;
       min-height:100vh; overflow-x:hidden;
+    }
+    .scroll-progress {
+      position: fixed; top: 0; left: 0; width: 0; height: 4px;
+      background: linear-gradient(90deg,#0f0 60%,#1de9b6 100%);
+      z-index: 9999; transition: width 0.2s;
     }
     header {
       display:flex; align-items:center; justify-content:space-between;
@@ -64,6 +72,7 @@
       text-shadow: 0 2px 16px #000, 0 0 8px #0f08;
       letter-spacing: 1px;
       animation: fadeInUp 1.2s;
+      min-height: 3.5em;
     }
     .hero p {
       color: #fff;
@@ -87,11 +96,16 @@
       max-width:1200px; margin:0 auto;
     }
     .service-card {
+      perspective: 600px;
+      transition: box-shadow 0.3s;
+      opacity: 1;
+    }
+    .service-card-inner {
       background:linear-gradient(120deg,#181818 80%,#0f0 200%);
       border-radius:14px; padding:28px 20px 24px 20px; border:1.5px solid #1de9b6;
       box-shadow:0 4px 24px 0 #0f0830;
-      opacity:0; transform:translateY(40px); transition:all 0.5s cubic-bezier(.4,2,.3,1);
-      will-change:opacity,transform;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s, background 0.3s;
+      will-change: transform;
       cursor:pointer;
       position:relative;
       overflow:hidden;
@@ -101,20 +115,19 @@
       text-shadow:0 0 8px #0f08;
     }
     .service-card p { color:#b2ffb2; font-size:1.05rem; }
-    .service-card:hover {
+    .service-card:hover .service-card-inner {
+      transform: rotateY(8deg) scale(1.04);
       box-shadow:0 8px 32px 0 #1de9b6cc;
-      transform:scale(1.04) translateY(-4px);
       border-color:#0f0;
       background:linear-gradient(120deg,#181818 60%,#1de9b6 200%);
     }
-    .service-card::after {
+    .service-card-inner::after {
       content:""; position:absolute; top:-40px; right:-40px; width:80px; height:80px;
       background:radial-gradient(circle,#0f0 0%,transparent 70%);
       opacity:0.12; pointer-events:none;
       transition:opacity 0.3s;
     }
-    .service-card:hover::after { opacity:0.22; }
-    .fade-in { opacity:1 !important; transform:translateY(0) !important; }
+    .service-card:hover .service-card-inner::after { opacity:0.22; }
     .contact-section {
       max-width:420px; margin:40px auto 0 auto; background:#181818; border-radius:14px;
       padding:28px 24px; border:1.5px solid #1de9b6;
@@ -134,7 +147,13 @@
       font-size:1.08rem; box-shadow:0 2px 8px 0 #0f08; transition:background 0.2s,transform 0.2s;
     }
     .contact-section button:hover { background:linear-gradient(90deg,#1de9b6 60%,#0f0 100%); transform:scale(1.04);}
-    .success-message { color:#0f0; margin-top:10px; }
+    .success-message {
+      color:#0f0; margin-top:10px;
+      animation: fadeInUp 0.7s;
+      font-weight: bold;
+      font-size: 1.1em;
+      text-align: center;
+    }
     /* FOOTER */
     footer {
       background: linear-gradient(90deg, #101820 80%, #1de9b6 120%);
@@ -147,9 +166,6 @@
       letter-spacing: 0.5px;
       box-shadow: 0 -2px 12px 0 #0f0830;
       transition: background 0.4s;
-    }
-    footer:hover {
-      background: linear-gradient(90deg, #101820 60%, #0f0 120%);
     }
     .footer-main {
       display: flex;
@@ -240,6 +256,15 @@
       margin-top: 8px;
       letter-spacing: 0.5px;
     }
+    .back-to-top {
+      position: fixed; right: 24px; bottom: 24px; z-index: 100;
+      background: linear-gradient(90deg,#0f0 60%,#1de9b6 100%);
+      color: #101820; border: none; border-radius: 50%; width: 48px; height: 48px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; box-shadow: 0 2px 12px #0f08; cursor: pointer; opacity: 0; pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .back-to-top.visible { opacity: 1; pointer-events: auto; }
     @media (max-width: 900px) {
       .footer-main {
         flex-direction: column;
@@ -263,14 +288,17 @@
       .hero h1 { font-size: 1.5rem; }
       .hero p { font-size: 1.05rem; }
       .services { grid-template-columns:1fr; padding:16px 4px; }
-      .service-card { padding:16px; }
+      .service-card-inner { padding:16px; }
       .contact-section { padding:14px; }
       .footer-main { gap: 10px; }
       .footer-map iframe { height: 140px; }
     }
   </style>
+  <!-- TypeIt per testo digitato -->
+  <script src="https://cdn.jsdelivr.net/npm/typeit@8.7.1/dist/typeit.min.js"></script>
 </head>
 <body>
+  <div class="scroll-progress" id="scrollProgress"></div>
   <header>
     <div class="logo">
       <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/3a626c88-1343-4d2d-9eff-9889d9319895" alt="Lucco Tech Logo">
@@ -284,10 +312,10 @@
   </header>
   <main id="main-content">
     <!-- Home Section -->
-    <section class="hero" id="home-section">
+    <section class="hero" id="home-section" data-aos="fade-up">
       <div class="hero-overlay">
         <div class="hero-content">
-          <h1>Soluzioni IT per privati e aziende</h1>
+          <h1 id="hero-title"></h1>
           <p>
             Computer & Workstation, Server, Notebook, Stampanti, Plotter e Fotocopiatrici,<br>
             Vendita e assistenza, Noleggio hardware, Installazione firewall,<br>
@@ -298,49 +326,49 @@
     </section>
     <!-- Prodotti/Servizi Section -->
     <section class="services" id="prodotti-section">
-      <div class="service-card">
+      <div class="service-card" data-aos="fade-up"><div class="service-card-inner">
         <h3>Computer & Workstation</h3>
         <p>Soluzioni affidabili per ogni esigenza professionale.</p>
-      </div>
-      <div class="service-card">
+      </div></div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="100"><div class="service-card-inner">
         <h3>Server</h3>
         <p>Server performanti per aziende di ogni dimensione.</p>
-      </div>
-      <div class="service-card">
+      </div></div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="200"><div class="service-card-inner">
         <h3>Notebook</h3>
         <p>Portatili per lavoro, studio e mobilità.</p>
-      </div>
-      <div class="service-card">
+      </div></div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="300"><div class="service-card-inner">
         <h3>Stampanti, Plotter e Fotocopiatrici</h3>
         <p>Dispositivi di stampa e copia per ogni ambiente.</p>
-      </div>
-      <div class="service-card">
+      </div></div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="400"><div class="service-card-inner">
         <h3>Vendita e assistenza</h3>
         <p>Supporto tecnico e commerciale dedicato.</p>
-      </div>
-      <div class="service-card">
+      </div></div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="500"><div class="service-card-inner">
         <h3>Noleggio hardware</h3>
         <p>Soluzioni flessibili per il noleggio di dispositivi IT.</p>
-      </div>
-      <div class="service-card">
+      </div></div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="600"><div class="service-card-inner">
         <h3>Installazione firewall</h3>
         <p>Sicurezza informatica per la tua rete aziendale.</p>
-      </div>
-      <div class="service-card">
+      </div></div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="700"><div class="service-card-inner">
         <h3>Consulenza informatica</h3>
         <p>Consulenza su misura per ottimizzare la tua infrastruttura IT.</p>
-      </div>
-      <div class="service-card">
+      </div></div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="800"><div class="service-card-inner">
         <h3>Soluzioni IT per privati e aziende</h3>
         <p>Progetti personalizzati per ogni esigenza.</p>
-      </div>
-      <div class="service-card">
+      </div></div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="900"><div class="service-card-inner">
         <h3>Realizzazione Siti Web</h3>
         <p>Creiamo siti web professionali su misura per la tua azienda o attività, con attenzione a design, sicurezza e visibilità online.</p>
-      </div>
+      </div></div>
     </section>
     <!-- Contatti Section -->
-    <section class="contact-section" id="contatti-section">
+    <section class="contact-section" id="contatti-section" data-aos="fade-up">
       <h2>Contattaci</h2>
       <form id="contact-form" autocomplete="off">
         <label for="nome">Nome</label>
@@ -387,8 +415,27 @@
       &copy; 2025 Lucco Tech. Tutti i diritti riservati.
     </div>
   </footer>
+  <button class="back-to-top" id="backToTop" title="Torna su">&#8679;</button>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
-    // Navigazione semplice tra sezioni
+    // Scroll progress bar
+    window.addEventListener('scroll', function() {
+      const scrollProgress = document.getElementById('scrollProgress');
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrolled = (scrollTop / docHeight) * 100;
+      scrollProgress.style.width = scrolled + "%";
+    });
+
+    // Bottone Torna su
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', function() {
+      if(window.scrollY > 300) backToTop.classList.add('visible');
+      else backToTop.classList.remove('visible');
+    });
+    backToTop.onclick = () => window.scrollTo({top:0,behavior:'smooth'});
+
+    // Navigazione tra sezioni
     function showSection(section) {
       document.getElementById('home-section').style.display = section === 'home' ? 'block' : 'none';
       document.getElementById('prodotti-section').style.display = section === 'prodotti' ? 'grid' : 'none';
@@ -401,21 +448,24 @@
     document.getElementById('nav-home').onclick = function(e){ e.preventDefault(); showSection('home'); }
     document.getElementById('nav-prodotti').onclick = function(e){ e.preventDefault(); showSection('prodotti'); }
     document.getElementById('nav-contatti').onclick = function(e){ e.preventDefault(); showSection('contatti'); }
-    // Mostra solo la home all'avvio
     showSection('home');
 
-    // Animazione fade-in sulle card servizi
-    function fadeInOnScroll() {
-      var cards = document.querySelectorAll('.service-card');
-      var trigger = window.innerHeight * 0.92;
-      cards.forEach(function(card){
-        var rect = card.getBoundingClientRect();
-        if(rect.top < trigger) card.classList.add('fade-in');
-      });
-    }
-    window.addEventListener('scroll', fadeInOnScroll);
-    window.addEventListener('resize', fadeInOnScroll);
-    window.addEventListener('DOMContentLoaded', fadeInOnScroll);
+    // TypeIt per testo digitato nella hero
+    document.addEventListener('DOMContentLoaded', function() {
+      if(window.TypeIt){
+        new TypeIt("#hero-title", {
+          strings: "Soluzioni IT per privati e aziende",
+          speed: 60,
+          waitUntilVisible: true,
+          cursor: false
+        }).go();
+      } else {
+        document.getElementById('hero-title').textContent = "Soluzioni IT per privati e aziende";
+      }
+    });
+
+    // AOS Animate On Scroll
+    AOS.init({ once:true, duration:700 });
 
     // Form di contatto (solo simulazione)
     document.getElementById('contact-form').onsubmit = function(e){
@@ -427,5 +477,6 @@
       }, 4000);
     }
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/typeit@8.7.1/dist/typeit.min.js"></script>
 </body>
 </html>
