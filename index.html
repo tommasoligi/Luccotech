@@ -33,27 +33,47 @@
       color:#101820;
       box-shadow:0 2px 8px 0 #0f08;
     }
+    /* HERO SECTION */
     .hero {
-      text-align:center;
-      padding:64px 16px 36px 16px;
-      background:linear-gradient(120deg,#0f0 0%,#101820 60%,#1de9b6 100%);
-      animation:fadeIn 1.2s;
+      position: relative;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(120deg,#0f0 0%,#101820 60%,#1de9b6 100%);
+      animation: fadeIn 1.2s;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg,rgba(16,24,32,0.92) 60%,rgba(29,233,182,0.15) 100%);
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 64px 16px 48px 16px;
     }
     .hero h1 {
-      color:#101820;
-      font-size:2.5rem;
-      margin-bottom:18px;
-      text-shadow:0 2px 16px #0f08;
-      letter-spacing:1px;
-      animation:fadeInUp 1.2s;
+      color: #0f0;
+      font-size: 2.8rem;
+      margin-bottom: 22px;
+      text-shadow: 0 2px 16px #000, 0 0 8px #0f08;
+      letter-spacing: 1px;
+      animation: fadeInUp 1.2s;
     }
     .hero p {
-      color:#222;
-      font-size:1.18rem;
-      max-width:600px;
-      margin:0 auto;
-      animation:fadeInUp 1.5s;
-      line-height:1.6;
+      color: #fff;
+      font-size: 1.35rem;
+      max-width: 700px;
+      margin: 0 auto;
+      animation: fadeInUp 1.5s;
+      line-height: 1.7;
+      text-shadow: 0 2px 8px #000;
     }
     @keyframes fadeIn {
       from { opacity:0;}
@@ -125,7 +145,9 @@
     @media (max-width:600px) {
       header { flex-direction:column; align-items:flex-start; padding:12px 8px; }
       nav { gap:10px; margin-top:8px; }
-      .hero { padding:32px 8px 16px 8px; }
+      .hero-content { padding: 32px 8px 16px 8px; }
+      .hero h1 { font-size: 1.5rem; }
+      .hero p { font-size: 1.05rem; }
       .services { grid-template-columns:1fr; padding:16px 4px; }
       .service-card { padding:16px; }
       .contact-section { padding:14px; }
@@ -147,12 +169,16 @@
   <main id="main-content">
     <!-- Home Section -->
     <section class="hero" id="home-section">
-      <h1>Soluzioni IT per privati e aziende</h1>
-      <p>
-        Computer & Workstation, Server, Notebook, Stampanti, Plotter e Fotocopiatrici,<br>
-        Vendita e assistenza, Noleggio hardware, Installazione firewall,<br>
-        Consulenza informatica, Realizzazione Siti Web su misura.
-      </p>
+      <div class="hero-overlay">
+        <div class="hero-content">
+          <h1>Soluzioni IT per privati e aziende</h1>
+          <p>
+            Computer & Workstation, Server, Notebook, Stampanti, Plotter e Fotocopiatrici,<br>
+            Vendita e assistenza, Noleggio hardware, Installazione firewall,<br>
+            Consulenza informatica, Realizzazione Siti Web su misura.
+          </p>
+        </div>
+      </div>
     </section>
     <!-- Prodotti/Servizi Section -->
     <section class="services" id="prodotti-section">
