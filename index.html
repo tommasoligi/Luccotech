@@ -293,6 +293,104 @@
       .footer-main { gap: 10px; }
       .footer-map iframe { height: 140px; }
     }
+
+    .services {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 16px;
+}
+
+.service-group {
+  flex: 1 1 320px;
+  min-width: 300px;
+  max-width: 370px;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.service-group h4 {
+  color: #1de9b6;
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  text-align: left;
+  font-weight: 700;
+}
+
+.service-card {
+  /* Rimuovi il margin-bottom se usi gap */
+}
+
+.service-card-inner {
+  min-height: 170px; /* Altezza minima uguale per tutte */
+  background: linear-gradient(120deg,#181818 80%,#0f0 200%);
+  border-radius: 14px;
+  padding: 28px 20px 24px 20px;
+  border: 1.5px solid #1de9b6;
+  box-shadow: 0 4px 24px 0 #0f0830;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s, background 0.3s;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card-inner h3 {
+  color: #0f0;
+  margin-top: 0;
+  font-size: 1.15rem;
+  margin-bottom: 10px;
+  text-shadow: 0 0 8px #0f08;
+}
+
+.service-card-inner p {
+  color: #b2ffb2;
+  font-size: 1.05rem;
+}
+
+.service-card-inner::after {
+  content: "";
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle,#0f0 0%,transparent 70%);
+  opacity: 0.12;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.service-card:hover .service-card-inner {
+  transform: rotateY(8deg) scale(1.04);
+  box-shadow: 0 8px 32px 0 #1de9b6cc;
+  border-color: #0f0;
+  background: linear-gradient(120deg,#181818 60%,#1de9b6 200%);
+}
+
+.service-card:hover .service-card-inner::after {
+  opacity: 0.22;
+}
+
+@media (max-width: 900px) {
+  .services {
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px 4px;
+  }
+  .service-group {
+    max-width: 100%;
+    min-width: 0;
+  }
+}
   </style>
   <!-- TypeIt per testo digitato -->
   <script src="https://cdn.jsdelivr.net/npm/typeit@8.7.1/dist/typeit.min.js"></script>
@@ -326,47 +424,76 @@
     </section>
     <!-- Prodotti/Servizi Section -->
     <section class="services" id="prodotti-section">
-      <div class="service-card" data-aos="fade-up"><div class="service-card-inner">
+  <div class="service-group">
+    <h4>Hardware</h4>
+    <div class="service-card">
+      <div class="service-card-inner">
         <h3>Computer & Workstation</h3>
         <p>Soluzioni affidabili per ogni esigenza professionale.</p>
-      </div></div>
-      <div class="service-card" data-aos="fade-up" data-aos-delay="100"><div class="service-card-inner">
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-card-inner">
         <h3>Server</h3>
         <p>Server performanti per aziende di ogni dimensione.</p>
-      </div></div>
-      <div class="service-card" data-aos="fade-up" data-aos-delay="200"><div class="service-card-inner">
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-card-inner">
         <h3>Notebook</h3>
         <p>Portatili per lavoro, studio e mobilità.</p>
-      </div></div>
-      <div class="service-card" data-aos="fade-up" data-aos-delay="300"><div class="service-card-inner">
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-card-inner">
         <h3>Stampanti, Plotter e Fotocopiatrici</h3>
         <p>Dispositivi di stampa e copia per ogni ambiente.</p>
-      </div></div>
-      <div class="service-card" data-aos="fade-up" data-aos-delay="400"><div class="service-card-inner">
+      </div>
+    </div>
+  </div>
+  <div class="service-group">
+    <h4>Servizi IT</h4>
+    <div class="service-card">
+      <div class="service-card-inner">
         <h3>Vendita e assistenza</h3>
         <p>Supporto tecnico e commerciale dedicato.</p>
-      </div></div>
-      <div class="service-card" data-aos="fade-up" data-aos-delay="500"><div class="service-card-inner">
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-card-inner">
         <h3>Noleggio hardware</h3>
         <p>Soluzioni flessibili per il noleggio di dispositivi IT.</p>
-      </div></div>
-      <div class="service-card" data-aos="fade-up" data-aos-delay="600"><div class="service-card-inner">
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-card-inner">
         <h3>Installazione firewall</h3>
         <p>Sicurezza informatica per la tua rete aziendale.</p>
-      </div></div>
-      <div class="service-card" data-aos="fade-up" data-aos-delay="700"><div class="service-card-inner">
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-card-inner">
         <h3>Consulenza informatica</h3>
         <p>Consulenza su misura per ottimizzare la tua infrastruttura IT.</p>
-      </div></div>
-      <div class="service-card" data-aos="fade-up" data-aos-delay="800"><div class="service-card-inner">
+      </div>
+    </div>
+  </div>
+  <div class="service-group">
+    <h4>Web & Soluzioni</h4>
+    <div class="service-card">
+      <div class="service-card-inner">
         <h3>Soluzioni IT per privati e aziende</h3>
         <p>Progetti personalizzati per ogni esigenza.</p>
-      </div></div>
-      <div class="service-card" data-aos="fade-up" data-aos-delay="900"><div class="service-card-inner">
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-card-inner">
         <h3>Realizzazione Siti Web</h3>
         <p>Creiamo siti web professionali su misura per la tua azienda o attività, con attenzione a design, sicurezza e visibilità online.</p>
-      </div></div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
     <!-- Contatti Section -->
     <section class="contact-section" id="contatti-section" data-aos="fade-up">
       <h2>Contattaci</h2>
