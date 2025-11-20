@@ -611,6 +611,43 @@ footer {
   background: linear-gradient(90deg,#1de9b6 60%,#0f0 100%);
   transform: scale(1.15);
 }
+    .recensioni-carousel {
+  max-width: 600px;
+  margin: 32px auto 0 auto;
+  padding: 24px 8px;
+}
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  height: 140px;
+}
+.carousel-slide {
+  position: absolute;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.7s;
+  text-align: center;
+  left: 0;
+  top: 0;
+}
+.carousel-slide.active {
+  opacity: 1;
+  position: relative;
+}
+.carousel-slide blockquote {
+  color: #b2ffb2;
+  font-size: 1.15rem;
+  margin: 0;
+  padding: 0 12px;
+  font-style: italic;
+}
+.carousel-slide span {
+  display: block;
+  color: #1de9b6;
+  margin-top: 8px;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
   </style>
   <!-- TypeIt per testo digitato -->
   <script src="https://cdn.jsdelivr.net/npm/typeit@8.7.1/dist/typeit.min.js"></script>
@@ -736,6 +773,34 @@ footer {
         <div class="success-message" id="success-message" style="display:none;">Messaggio inviato! Ti risponderemo al più presto.</div>
       </form>
     </section>
+    <section class="recensioni-carousel">
+  <div class="carousel-container">
+    <div class="carousel-slide active">
+      <blockquote>
+        <p>“Ho portato il mio PC per una riparazione urgente e in meno di 24 ore era già pronto. Gentilezza e professionalità al top!”</p>
+        <span>★★★★★ – Marco R. (da Google)</span>
+      </blockquote>
+    </div>
+    <div class="carousel-slide">
+      <blockquote>
+        <p>“Consigliatissimo! Mi hanno aiutato a scegliere il computer giusto per il mio lavoro e sono sempre disponibili per qualsiasi dubbio.”</p>
+        <span>★★★★★ – Laura B. (da Google)</span>
+      </blockquote>
+    </div>
+    <div class="carousel-slide">
+      <blockquote>
+        <p>“Ottima assistenza anche dopo l’acquisto. Personale molto competente e prezzi onesti.”</p>
+        <span>★★★★★ – Andrea S. (da Google)</span>
+      </blockquote>
+    </div>
+    <div class="carousel-slide">
+      <blockquote>
+        <p>“Servizio rapido e preciso. Hanno risolto un problema che altri non riuscivano a sistemare. Grazie!”</p>
+        <span>★★★★★ – Giulia T. (da Google)</span>
+      </blockquote>
+    </div>
+  </div>
+</section>
   </main>
   <footer>
   <div class="footer-main">
@@ -857,6 +922,20 @@ document.querySelectorAll('.accordion-header').forEach(btn => {
     // Se non era aperto, apri questo
     if (!isOpen) item.classList.add('open');
   });
+});
+    document.addEventListener('DOMContentLoaded', function() {
+  const slides = document.querySelectorAll('.carousel-slide');
+  let current = 0;
+  function showSlide(idx) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === idx);
+    });
+  }
+  showSlide(current);
+  setInterval(() => {
+    current = (current + 1) % slides.length;
+    showSlide(current);
+  }, 3500);
 });
   </script>
   <script src="https://cdn.jsdelivr.net/npm/typeit@8.7.1/dist/typeit.min.js"></script>
