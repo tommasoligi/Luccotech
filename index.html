@@ -477,17 +477,18 @@ footer {
 }
 .accordion-item.open .accordion-header::after {
   transform: rotate(-180deg);
-}
 .accordion-content {
   display: none;
   width: 100%;
   padding: 18px 24px 10px 24px;
   animation: fadeInAccordion 0.3s;
   background: #181818;
-  display: flex;
   flex-direction: column;
   gap: 16px;
   align-items: center;
+}
+.accordion-item.open .accordion-content {
+  display: flex;
 }
 @keyframes fadeInAccordion {
   from { opacity: 0; transform: translateY(-10px);}
