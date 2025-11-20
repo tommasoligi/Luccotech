@@ -428,22 +428,82 @@ footer {
   color: #b2ffb2;
   font-size: 1.05rem;
 }
-    /* Hardware */
+    .services {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 16px;
+}
+.mega-service-link {
+  flex: 1 1 300px;
+  max-width: 350px;
+  min-width: 220px;
+  text-decoration: none;
+  display: block;
+}
+@media (max-width: 900px) {
+  .services {
+    flex-direction: column;
+    align-items: center;
+  }
+  .mega-service-link {
+    max-width: 100%;
+  }
+}
 body.hardware-bg {
   background: linear-gradient(120deg, #101820 60%, #1de9b6 100%);
   color: #eee;
 }
-
-/* Servizi IT */
 body.serviziit-bg {
   background: linear-gradient(120deg, #181818 60%, #0f0 100%);
   color: #eee;
 }
-
-/* Web & Soluzioni */
 body.websoluzioni-bg {
   background: linear-gradient(120deg, #222 60%, #1de9b6 100%);
   color: #eee;
+}
+h1 {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 32px;
+  color: #0f0;
+  text-shadow: 0 2px 16px #000, 0 0 8px #0f08;
+}
+.services {
+  margin-top: 0;
+}
+.service-card {
+  flex: 1 1 260px;
+  margin-bottom: 0;
+}
+.service-card-inner {
+  min-height: 140px;
+  background: linear-gradient(120deg,#181818 80%,#0f0 200%);
+  border-radius: 14px;
+  padding: 28px 20px 24px 20px;
+  border: 1.5px solid #1de9b6;
+  box-shadow: 0 4px 24px 0 #0f0830;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s, background 0.3s;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.service-card-inner h3 {
+  color: #0f0;
+  margin-top: 0;
+  font-size: 1.15rem;
+  margin-bottom: 10px;
+  text-shadow: 0 0 8px #0f08;
+}
+.service-card-inner p {
+  color: #b2ffb2;
+  font-size: 1.05rem;
 }
 
   </style>
@@ -479,26 +539,24 @@ body.websoluzioni-bg {
     </section>
     <!-- Prodotti/Servizi Section -->
    <section class="services" id="prodotti-section">
-  <div class="service-group">
-    <a href="hardware.html" class="mega-service-link">
-      <div class="service-card-inner">
-        <h3>Hardware</h3>
-        <p>Computer, Workstation, Server, Notebook, Stampanti, Plotter, Fotocopiatrici</p>
-      </div>
-    </a>
-    <a href="servizi-it.html" class="mega-service-link">
-      <div class="service-card-inner">
-        <h3>Servizi IT</h3>
-        <p>Vendita e assistenza, Noleggio hardware, Installazione firewall, Consulenza informatica</p>
-      </div>
-    </a>
-    <a href="web-soluzioni.html" class="mega-service-link">
-      <div class="service-card-inner">
-        <h3>Web & Soluzioni</h3>
-        <p>Soluzioni IT per privati e aziende, Realizzazione Siti Web</p>
-      </div>
-    </a>
-  </div>
+  <a href="hardware.html" class="mega-service-link">
+    <div class="service-card-inner">
+      <h3>Hardware</h3>
+      <p>Computer, Workstation, Server, Notebook, Stampanti, Plotter, Fotocopiatrici</p>
+    </div>
+  </a>
+  <a href="servizi-it.html" class="mega-service-link">
+    <div class="service-card-inner">
+      <h3>Servizi IT</h3>
+      <p>Vendita e assistenza, Noleggio hardware, Installazione firewall, Consulenza informatica</p>
+    </div>
+  </a>
+  <a href="web-soluzioni.html" class="mega-service-link">
+    <div class="service-card-inner">
+      <h3>Web & Soluzioni</h3>
+      <p>Soluzioni IT per privati e aziende, Realizzazione Siti Web</p>
+    </div>
+  </a>
 </section>
     <!-- Contatti Section -->
     <section class="contact-section" id="contatti-section" data-aos="fade-up">
