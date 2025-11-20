@@ -167,7 +167,6 @@ footer {
   box-shadow: 0 -2px 12px 0 #0f0830;
   transition: background 0.4s;
 }
-
 .footer-main {
   display: flex;
   flex-wrap: wrap;
@@ -178,7 +177,6 @@ footer {
   margin: 0 auto 8px auto;
   padding: 0 8px;
 }
-
 .footer-info {
   font-size: 1.05rem;
   color: #b2ffb2;
@@ -191,7 +189,6 @@ footer {
   justify-content: flex-start;
   gap: 12px;
 }
-
 .orari-footer {
   width: 100%;
   border-collapse: collapse;
@@ -207,7 +204,6 @@ footer {
   color: #1de9b6;
   font-weight: 600;
 }
-
 .footer-map {
   flex: 1 1 320px;
   min-width: 260px;
@@ -216,6 +212,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 .footer-map iframe {
   width: 100%;
@@ -224,7 +221,13 @@ footer {
   border: none;
   box-shadow: 0 2px 10px rgba(21, 223, 55, 0.3);
 }
-
+.footer-piva {
+  color: #b2ffb2;
+  text-align: center;
+  font-size: 1.05rem;
+  margin-top: 8px;
+  letter-spacing: 0.5px;
+}
 .footer-social {
   display: flex;
   flex-direction: column;
@@ -261,7 +264,6 @@ footer {
   color: #0f0;
   transform: scale(1.2) rotate(-8deg);
 }
-
 .footer-copy {
   color: #b2ffb2;
   text-align: center;
@@ -269,7 +271,6 @@ footer {
   margin-top: 8px;
   letter-spacing: 0.5px;
 }
-
 @media (max-width: 900px) {
   .footer-main {
     flex-direction: column;
@@ -388,21 +389,44 @@ footer {
     min-width: 0;
   }
 }
-    .orari-footer {
-  width: 100%;
-  border-collapse: collapse;
+    .mega-service-link {
+  text-decoration: none;
+  display: block;
+  margin-bottom: 24px;
+}
+.mega-service-link .service-card-inner {
+  min-height: 140px;
+  background: linear-gradient(120deg,#181818 80%,#0f0 200%);
+  border-radius: 14px;
+  padding: 28px 20px 24px 20px;
+  border: 1.5px solid #1de9b6;
+  box-shadow: 0 4px 24px 0 #0f0830;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s, background 0.3s;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.mega-service-link:hover .service-card-inner {
+  transform: scale(1.04);
+  box-shadow: 0 8px 32px 0 #1de9b6cc;
+  border-color: #0f0;
+  background: linear-gradient(120deg,#181818 60%,#1de9b6 200%);
+}
+.mega-service-link h3 {
+  color: #0f0;
+  margin-top: 0;
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+  text-shadow: 0 0 8px #0f08;
+}
+.mega-service-link p {
   color: #b2ffb2;
   font-size: 1.05rem;
-  margin-top: 8px;
 }
-.orari-footer td {
-  padding: 2px 8px 2px 0;
-}
-.orari-footer tr td:last-child {
-  text-align: right;
-  color: #1de9b6;
-  font-weight: 600;
-}
+
   </style>
   <!-- TypeIt per testo digitato -->
   <script src="https://cdn.jsdelivr.net/npm/typeit@8.7.1/dist/typeit.min.js"></script>
@@ -435,75 +459,26 @@ footer {
       </div>
     </section>
     <!-- Prodotti/Servizi Section -->
-    <section class="services" id="prodotti-section">
+   <section class="services" id="prodotti-section">
   <div class="service-group">
-    <h4>Hardware</h4>
-    <div class="service-card">
+    <a href="hardware.html" class="mega-service-link">
       <div class="service-card-inner">
-        <h3>Computer & Workstation</h3>
-        <p>Soluzioni affidabili per ogni esigenza professionale.</p>
+        <h3>Hardware</h3>
+        <p>Computer, Workstation, Server, Notebook, Stampanti, Plotter, Fotocopiatrici</p>
       </div>
-    </div>
-    <div class="service-card">
+    </a>
+    <a href="servizi-it.html" class="mega-service-link">
       <div class="service-card-inner">
-        <h3>Server</h3>
-        <p>Server performanti per aziende di ogni dimensione.</p>
+        <h3>Servizi IT</h3>
+        <p>Vendita e assistenza, Noleggio hardware, Installazione firewall, Consulenza informatica</p>
       </div>
-    </div>
-    <div class="service-card">
+    </a>
+    <a href="web-soluzioni.html" class="mega-service-link">
       <div class="service-card-inner">
-        <h3>Notebook</h3>
-        <p>Portatili per lavoro, studio e mobilità.</p>
+        <h3>Web & Soluzioni</h3>
+        <p>Soluzioni IT per privati e aziende, Realizzazione Siti Web</p>
       </div>
-    </div>
-    <div class="service-card">
-      <div class="service-card-inner">
-        <h3>Stampanti, Plotter e Fotocopiatrici</h3>
-        <p>Dispositivi di stampa e copia per ogni ambiente.</p>
-      </div>
-    </div>
-  </div>
-  <div class="service-group">
-    <h4>Servizi IT</h4>
-    <div class="service-card">
-      <div class="service-card-inner">
-        <h3>Vendita e assistenza</h3>
-        <p>Supporto tecnico e commerciale dedicato.</p>
-      </div>
-    </div>
-    <div class="service-card">
-      <div class="service-card-inner">
-        <h3>Noleggio hardware</h3>
-        <p>Soluzioni flessibili per il noleggio di dispositivi IT.</p>
-      </div>
-    </div>
-    <div class="service-card">
-      <div class="service-card-inner">
-        <h3>Installazione firewall</h3>
-        <p>Sicurezza informatica per la tua rete aziendale.</p>
-      </div>
-    </div>
-    <div class="service-card">
-      <div class="service-card-inner">
-        <h3>Consulenza informatica</h3>
-        <p>Consulenza su misura per ottimizzare la tua infrastruttura IT.</p>
-      </div>
-    </div>
-  </div>
-  <div class="service-group">
-    <h4>Web & Soluzioni</h4>
-    <div class="service-card">
-      <div class="service-card-inner">
-        <h3>Soluzioni IT per privati e aziende</h3>
-        <p>Progetti personalizzati per ogni esigenza.</p>
-      </div>
-    </div>
-    <div class="service-card">
-      <div class="service-card-inner">
-        <h3>Realizzazione Siti Web</h3>
-        <p>Creiamo siti web professionali su misura per la tua azienda o attività, con attenzione a design, sicurezza e visibilità online.</p>
-      </div>
-    </div>
+    </a>
   </div>
 </section>
     <!-- Contatti Section -->
@@ -521,12 +496,11 @@ footer {
       </form>
     </section>
   </main>
-  <footer>
+ <footer>
   <div class="footer-main">
-    <!-- Colonna sinistra: Orari e Partita IVA -->
+    <!-- Colonna sinistra: Orari -->
     <div class="footer-info">
       <strong>Lucco Tech di Matteo Luchena</strong><br>
-      Pesaro (PU)<br>
       <table class="orari-footer">
         <tr><td>Lunedì</td><td>09–13, 15–19</td></tr>
         <tr><td>Martedì</td><td>09–13, 15–19</td></tr>
@@ -536,13 +510,14 @@ footer {
         <tr><td>Sabato</td><td>Chiuso</td></tr>
         <tr><td>Domenica</td><td>Chiuso</td></tr>
       </table>
-      <br>
-      Partita IVA: 02828830410<br>
     </div>
-    <!-- Colonna centrale: Mappa -->
+    <!-- Colonna centrale: Mappa + Partita IVA -->
     <div class="footer-map">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2880.0636212274877!2d12.983376015440019!3d43.90862275879196!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132cc0c391ed7711%3A0xefa5ef33a0bd4c3!2sVia%20Mancini%20145%2C%2061122%20Pesaro%20PU%2C%20Italia!5e0!3m2!1sit!2sit!4v1697733900000!5m2!1sit!2sit"
-        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div style="width:100%">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2880.0636212274877!2d12.983376015440019!3d43.90862275879196!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132cc0c391ed7711%3A0xefa5ef33a0bd4c3!2sVia%20Mancini%20145%2C%2061122%20Pesaro%20PU%2C%20Italia!5e0!3m2!1sit!2sit!4v1697733900000!5m2!1sit!2sit"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="footer-piva">Partita IVA: 02828830410</div>
+      </div>
     </div>
     <!-- Colonna destra: Social -->
     <div class="footer-social">
