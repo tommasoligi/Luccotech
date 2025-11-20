@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -774,7 +775,12 @@ footer {
     });
 
     // Bottone Torna su
-<button class="back-to-top" id="backToTop" title="Torna su">&#8679;</button>
+      const backToTop = document.getElementById('backToTop');
+      window.addEventListener('scroll', function() {
+        if(window.scrollY > 300) backToTop.classList.add('visible');
+        else backToTop.classList.remove('visible');
+      });
+      backToTop.onclick = () => window.scrollTo({top:0,behavior:'smooth'});
 
     // Navigazione tra sezioni
     function showSection(section) {
@@ -827,13 +833,8 @@ document.querySelectorAll('.accordion-header').forEach(btn => {
     if (!isOpen) item.classList.add('open');
   });
 });
-    const backToTop = document.getElementById('backToTop');
-window.addEventListener('scroll', function() {
-  if(window.scrollY > 300) backToTop.classList.add('visible');
-  else backToTop.classList.remove('visible');
-});
-backToTop.onclick = () => window.scrollTo({top:0,behavior:'smooth'});
   </script>
   <script src="https://cdn.jsdelivr.net/npm/typeit@8.7.1/dist/typeit.min.js"></script>
+  <button class="back-to-top" id="backToTop" title="Torna su">&#8679;</button>
 </body>
 </html>
