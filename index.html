@@ -168,6 +168,7 @@ footer {
   box-shadow: 0 -2px 12px 0 #0f0830;
   transition: background 0.4s;
 }
+
 .footer-main {
   display: flex;
   flex-wrap: wrap;
@@ -178,6 +179,7 @@ footer {
   margin: 0 auto 8px auto;
   padding: 0 8px;
 }
+
 .footer-info {
   font-size: 1.05rem;
   color: #b2ffb2;
@@ -188,20 +190,15 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 8px;
+  gap: 12px;
 }
-.footer-piva {
-  color: #b2ffb2;
-  font-size: 1.05rem;
-  margin: 2px 0 4px 0; /* diminuito lo spazio */
-  letter-spacing: 0.5px;
-}
+
 .orari-footer {
   width: 100%;
   border-collapse: collapse;
   color: #b2ffb2;
   font-size: 1.05rem;
-  margin-top: 0;
+  margin-top: 8px;
 }
 .orari-footer td {
   padding: 2px 8px 2px 0;
@@ -211,29 +208,28 @@ footer {
   color: #1de9b6;
   font-weight: 600;
 }
+
 .footer-map {
-  flex: 1 1 220px;
-  min-width: 220px;
-  max-width: 260px;
+  flex: 1 1 320px;
+  min-width: 260px;
+  max-width: 400px;
   margin: 0 16px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  flex-direction: column;
 }
 .footer-map iframe {
   width: 100%;
   height: 180px;
-  min-height: 180px;
-  max-height: 180px;
   border-radius: 8px;
   border: none;
   box-shadow: 0 2px 10px rgba(21, 223, 55, 0.3);
 }
+
 .footer-social {
   display: flex;
   flex-direction: column;
-  gap: 18px; /* aumentato da 8px a 18px */
+  gap: 8px;
   text-align: right;
   min-width: 120px;
   flex: 1 1 120px;
@@ -266,6 +262,7 @@ footer {
   color: #0f0;
   transform: scale(1.2) rotate(-8deg);
 }
+
 .footer-copy {
   color: #b2ffb2;
   text-align: center;
@@ -273,6 +270,7 @@ footer {
   margin-top: 8px;
   letter-spacing: 0.5px;
 }
+
 @media (max-width: 900px) {
   .footer-main {
     flex-direction: column;
@@ -291,7 +289,7 @@ footer {
 }
 @media (max-width:600px) {
   .footer-main { gap: 10px; }
-  .footer-map iframe { height: 140px; min-height: 140px; max-height: 140px; }
+  .footer-map iframe { height: 140px; }
 }
 
     .services {
@@ -391,373 +389,12 @@ footer {
     min-width: 0;
   }
 }
-    .mega-service-link {
-  text-decoration: none;
-  display: block;
-  margin-bottom: 24px;
-}
-.mega-service-link .service-card-inner {
-  min-height: 140px;
-  background: linear-gradient(120deg,#181818 80%,#0f0 200%);
-  border-radius: 14px;
-  padding: 28px 20px 24px 20px;
-  border: 1.5px solid #1de9b6;
-  box-shadow: 0 4px 24px 0 #0f0830;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s, background 0.3s;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-.mega-service-link:hover .service-card-inner {
-  transform: scale(1.04);
-  box-shadow: 0 8px 32px 0 #1de9b6cc;
-  border-color: #0f0;
-  background: linear-gradient(120deg,#181818 60%,#1de9b6 200%);
-}
-.mega-service-link h3 {
-  color: #0f0;
-  margin-top: 0;
-  font-size: 1.25rem;
-  margin-bottom: 10px;
-  text-shadow: 0 0 8px #0f08;
-}
-.mega-service-link p {
-  color: #b2ffb2;
-  font-size: 1.05rem;
-}
-    .services {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 32px;
-  justify-content: center;
-  max-width: 1200px;
-  margin: 40px auto;
-  padding: 0 16px;
-}
-.mega-service-link {
-  flex: 1 1 300px;
-  max-width: 350px;
-  min-width: 220px;
-  text-decoration: none;
-  display: block;
-}
-@media (max-width: 900px) {
-  .services {
-    flex-direction: column;
-    align-items: center;
-  }
-  .mega-service-link {
-    max-width: 100%;
-  }
-}
-body.hardware-bg {
-  background: linear-gradient(120deg, #101820 60%, #1de9b6 100%);
-  color: #eee;
-}
-body.serviziit-bg {
-  background: linear-gradient(120deg, #181818 60%, #0f0 100%);
-  color: #eee;
-}
-body.websoluzioni-bg {
-  background: linear-gradient(120deg, #222 60%, #1de9b6 100%);
-  color: #eee;
-}
-h1 {
-  text-align: center;
-  margin-top: 40px;
-  margin-bottom: 32px;
-  color: #0f0;
-  text-shadow: 0 2px 16px #000, 0 0 8px #0f08;
-}
-.services {
-  margin-top: 0;
-}
-.service-card {
-  flex: 1 1 260px;
-  margin-bottom: 0;
-}
-.service-card-inner {
-  min-height: 140px;
-  background: linear-gradient(120deg,#181818 80%,#0f0 200%);
-  border-radius: 14px;
-  padding: 28px 20px 24px 20px;
-  border: 1.5px solid #1de9b6;
-  box-shadow: 0 4px 24px 0 #0f0830;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s, background 0.3s;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-.service-card-inner h3 {
-  color: #0f0;
-  margin-top: 0;
-  font-size: 1.15rem;
-  margin-bottom: 10px;
-  text-shadow: 0 0 8px #0f08;
-}
-.service-card-inner p {
-  color: #b2ffb2;
-  font-size: 1.05rem;
-}
-.page-title {
-  text-align: center;
-  margin-top: 40px;
-  margin-bottom: 32px;
-  color: #1de9b6;
-  font-size: 2.2rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-shadow: 0 2px 16px #000, 0 0 8px #0f08;
-  font-family: 'Segoe UI', Arial, sans-serif;
-}
-    /* Sfondi per le pagine di categoria */
-body.hardware-bg {
-  background: linear-gradient(120deg, #101820 60%, #1de9b6 100%);
-  color: #eee;
-}
-body.serviziit-bg {
-  background: linear-gradient(120deg, #181818 60%, #0f0 100%);
-  color: #eee;
-}
-body.websoluzioni-bg {
-  background: linear-gradient(120deg, #222 60%, #1de9b6 100%);
-  color: #eee;
-}
-
-/* Header */
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 18px;
-  background: #101820;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.12);
-  min-height: 56px;
-}
-
-.logo span {
-  color: #0f0;
-  font-size: 1.2rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-shadow: 0 0 8px #0f08;
-}
-
-nav {
-  display: flex;
-  gap: 16px;
-}
-
-nav a {
-  color: #0f0;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1rem;
-  padding: 5px 12px;
-  border-radius: 6px;
-  transition: background 0.2s, color 0.2s;
-  position: relative;
-}
-
-nav a.active, nav a:hover {
-  background: linear-gradient(90deg,#0f0 60%,#1de9b6 100%);
-  color: #101820;
-  box-shadow: 0 2px 8px 0 #0f08;
-}
-
-@media (max-width: 600px) {
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 8px 6px;
-    min-height: unset;
-  }
-  .logo {
-    margin-bottom: 6px;
-  }
-  nav {
-    gap: 8px;
-    width: 100%;
-    flex-wrap: wrap;
-  }
-}
-}
-nav {
-  display: flex;
-  gap: 22px;
-}
-nav a {
-  color: #0f0;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1.08rem;
-  padding: 6px 14px;
-  border-radius: 6px;
-  transition: background 0.2s, color 0.2s;
-  position: relative;
-}
-nav a.active, nav a:hover {
-  background: linear-gradient(90deg,#0f0 60%,#1de9b6 100%);
-  color: #101820;
-  box-shadow: 0 2px 8px 0 #0f08;
-}
-
-/* Titolo pagina */
-.page-title {
-  text-align: center;
-  margin-top: 40px;
-  margin-bottom: 32px;
-  color: #1de9b6 !important;
-  font-size: 2.2rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-shadow: 0 2px 16px #000, 0 0 8px #0f08;
-  font-family: 'Segoe UI', Arial, sans-serif;
-}
-
-/* Servizi - Mega card e card */
-.services {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 32px;
-  justify-content: center;
-  max-width: 1200px;
-  margin: 40px auto;
-  padding: 0 16px;
-}
-.service-group {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  gap: 32px;
-  justify-content: center;
-}
-.mega-service-link {
-  flex: 1 1 300px;
-  max-width: 350px;
-  min-width: 220px;
-  text-decoration: none;
-  display: block;
-}
-.mega-service-link .service-card-inner {
-  min-height: 140px;
-  background: linear-gradient(120deg,#181818 80%,#0f0 200%);
-  border-radius: 14px;
-  padding: 28px 20px 24px 20px;
-  border: 1.5px solid #1de9b6;
-  box-shadow: 0 4px 24px 0 #0f0830;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s, background 0.3s;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-.mega-service-link:hover .service-card-inner {
-  transform: scale(1.04);
-  box-shadow: 0 8px 32px 0 #1de9b6cc;
-  border-color: #0f0;
-  background: linear-gradient(120deg,#181818 60%,#1de9b6 200%);
-}
-.mega-service-link h3 {
-  color: #0f0;
-  margin-top: 0;
-  font-size: 1.25rem;
-  margin-bottom: 10px;
-  text-shadow: 0 0 8px #0f08;
-}
-.mega-service-link p {
-  color: #b2ffb2;
-  font-size: 1.05rem;
-}
-.service-card {
-  flex: 1 1 260px;
-  margin-bottom: 0;
-}
-.service-card-inner {
-  min-height: 140px;
-  background: linear-gradient(120deg,#181818 80%,#0f0 200%);
-  border-radius: 14px;
-  padding: 28px 20px 24px 20px;
-  border: 1.5px solid #1de9b6;
-  box-shadow: 0 4px 24px 0 #0f0830;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s, background 0.3s;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-.service-card-inner h3 {
-  color: #0f0;
-  margin-top: 0;
-  font-size: 1.15rem;
-  margin-bottom: 10px;
-  text-shadow: 0 0 8px #0f08;
-}
-.service-card-inner p {
-  color: #b2ffb2;
-  font-size: 1.05rem;
-}
-
-/* Footer */
-footer {
-  background: linear-gradient(90deg, #101820 80%, #1de9b6 120%);
-  color: #b2ffb2;
-  text-align: center;
-  padding: 18px 8px 0 8px;
-  font-size: 1.05rem;
-  margin-top: 32px;
-  border-top: 1.5px solid #1de9b6;
-  letter-spacing: 0.5px;
-  box-shadow: 0 -2px 12px 0 #0f0830;
-  transition: background 0.4s;
-}
-.footer-main {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 32px;
-  max-width: 1200px;
-  margin: 0 auto 8px auto;
-  padding: 0 8px;
-}
-.footer-info {
-  font-size: 1.05rem;
-  color: #b2ffb2;
-  line-height: 1.7;
-  text-align: left;
-  min-width: 220px;
-  flex: 1 1 220px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 4px;
-}
-.footer-piva {
-  color: #b2ffb2;
-  font-size: 1.05rem;
-  margin: 2px 0 4px 0;
-  letter-spacing: 0.5px;
-}
-.orari-footer {
+    .orari-footer {
   width: 100%;
   border-collapse: collapse;
   color: #b2ffb2;
   font-size: 1.05rem;
-  margin-top: 0;
+  margin-top: 8px;
 }
 .orari-footer td {
   padding: 2px 8px 2px 0;
@@ -766,102 +403,6 @@ footer {
   text-align: right;
   color: #1de9b6;
   font-weight: 600;
-}
-.footer-map {
-  flex: 1 1 220px;
-  min-width: 220px;
-  max-width: 260px;
-  margin: 0 16px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  flex-direction: column;
-}
-.footer-map iframe {
-  width: 100%;
-  height: 180px;
-  min-height: 180px;
-  max-height: 180px;
-  border-radius: 8px;
-  border: none;
-  box-shadow: 0 2px 10px rgba(21, 223, 55, 0.3);
-}
-.footer-social {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  text-align: right;
-  min-width: 120px;
-  flex: 1 1 120px;
-  align-items: flex-end;
-  justify-content: flex-start;
-  margin-top: 0;
-}
-.footer-social-link {
-  color: #1de9b6;
-  font-weight: 600;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: color 0.2s, transform 0.2s;
-  font-size: 1.08rem;
-}
-.footer-social-link:hover {
-  color: #0f0;
-  text-decoration: underline;
-  transform: translateY(-2px) scale(1.08);
-}
-.footer-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: color 0.2s, transform 0.2s;
-}
-.footer-social-link:hover .footer-icon {
-  color: #0f0;
-  transform: scale(1.2) rotate(-8deg);
-}
-.footer-copy {
-  color: #b2ffb2;
-  text-align: center;
-  font-size: 1.05rem;
-  margin-top: 8px;
-  letter-spacing: 0.5px;
-}
-
-/* Responsive */
-@media (max-width: 900px) {
-  .footer-main {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 18px;
-  }
-  .footer-map {
-    max-width: 100%;
-    margin: 0 0 12px 0;
-  }
-  .footer-social {
-    align-items: flex-start;
-    text-align: left;
-    margin-top: 8px;
-  }
-  .service-group {
-    flex-direction: column;
-    gap: 24px;
-  }
-  .services {
-    flex-direction: column;
-    align-items: center;
-  }
-  .mega-service-link {
-    max-width: 100%;
-  }
-}
-@media (max-width:600px) {
-  .footer-main { gap: 10px; }
-  .footer-map iframe { height: 140px; min-height: 140px; max-height: 140px; }
-  .page-title { font-size: 1.4rem; }
 }
   </style>
   <!-- TypeIt per testo digitato -->
@@ -895,25 +436,76 @@ footer {
       </div>
     </section>
     <!-- Prodotti/Servizi Section -->
-   <section class="services" id="prodotti-section">
-  <a href="hardware.html" class="mega-service-link">
-    <div class="service-card-inner">
-      <h3>Hardware</h3>
-      <p>Computer, Workstation, Server, Notebook, Stampanti, Plotter, Fotocopiatrici</p>
+    <section class="services" id="prodotti-section">
+  <div class="service-group">
+    <h4>Hardware</h4>
+    <div class="service-card">
+      <div class="service-card-inner">
+        <h3>Computer & Workstation</h3>
+        <p>Soluzioni affidabili per ogni esigenza professionale.</p>
+      </div>
     </div>
-  </a>
-  <a href="servizi-it.html" class="mega-service-link">
-    <div class="service-card-inner">
-      <h3>Servizi IT</h3>
-      <p>Vendita e assistenza, Noleggio hardware, Installazione firewall, Consulenza informatica</p>
+    <div class="service-card">
+      <div class="service-card-inner">
+        <h3>Server</h3>
+        <p>Server performanti per aziende di ogni dimensione.</p>
+      </div>
     </div>
-  </a>
-  <a href="web-soluzioni.html" class="mega-service-link">
-    <div class="service-card-inner">
-      <h3>Web & Soluzioni</h3>
-      <p>Soluzioni IT per privati e aziende, Realizzazione Siti Web</p>
+    <div class="service-card">
+      <div class="service-card-inner">
+        <h3>Notebook</h3>
+        <p>Portatili per lavoro, studio e mobilità.</p>
+      </div>
     </div>
-  </a>
+    <div class="service-card">
+      <div class="service-card-inner">
+        <h3>Stampanti, Plotter e Fotocopiatrici</h3>
+        <p>Dispositivi di stampa e copia per ogni ambiente.</p>
+      </div>
+    </div>
+  </div>
+  <div class="service-group">
+    <h4>Servizi IT</h4>
+    <div class="service-card">
+      <div class="service-card-inner">
+        <h3>Vendita e assistenza</h3>
+        <p>Supporto tecnico e commerciale dedicato.</p>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-card-inner">
+        <h3>Noleggio hardware</h3>
+        <p>Soluzioni flessibili per il noleggio di dispositivi IT.</p>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-card-inner">
+        <h3>Installazione firewall</h3>
+        <p>Sicurezza informatica per la tua rete aziendale.</p>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-card-inner">
+        <h3>Consulenza informatica</h3>
+        <p>Consulenza su misura per ottimizzare la tua infrastruttura IT.</p>
+      </div>
+    </div>
+  </div>
+  <div class="service-group">
+    <h4>Web & Soluzioni</h4>
+    <div class="service-card">
+      <div class="service-card-inner">
+        <h3>Soluzioni IT per privati e aziende</h3>
+        <p>Progetti personalizzati per ogni esigenza.</p>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-card-inner">
+        <h3>Realizzazione Siti Web</h3>
+        <p>Creiamo siti web professionali su misura per la tua azienda o attività, con attenzione a design, sicurezza e visibilità online.</p>
+      </div>
+    </div>
+  </div>
 </section>
     <!-- Contatti Section -->
     <section class="contact-section" id="contatti-section" data-aos="fade-up">
@@ -930,12 +522,12 @@ footer {
       </form>
     </section>
   </main>
-<footer>
+  <footer>
   <div class="footer-main">
-    <!-- Colonna sinistra: Orari + Partita IVA -->
+    <!-- Colonna sinistra: Orari e Partita IVA -->
     <div class="footer-info">
       <strong>Lucco Tech di Matteo Luchena</strong><br>
-      <div class="footer-piva">Partita IVA: 02828830410</div>
+      Pesaro (PU)<br>
       <table class="orari-footer">
         <tr><td>Lunedì</td><td>09–13, 15–19</td></tr>
         <tr><td>Martedì</td><td>09–13, 15–19</td></tr>
@@ -945,8 +537,10 @@ footer {
         <tr><td>Sabato</td><td>Chiuso</td></tr>
         <tr><td>Domenica</td><td>Chiuso</td></tr>
       </table>
+      <br>
+      Partita IVA: 02828830410<br>
     </div>
-    <!-- Colonna centrale: Mappa compatta -->
+    <!-- Colonna centrale: Mappa -->
     <div class="footer-map">
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2880.0636212274877!2d12.983376015440019!3d43.90862275879196!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132cc0c391ed7711%3A0xefa5ef33a0bd4c3!2sVia%20Mancini%20145%2C%2061122%20Pesaro%20PU%2C%20Italia!5e0!3m2!1sit!2sit!4v1697733900000!5m2!1sit!2sit"
         allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
