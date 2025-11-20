@@ -432,6 +432,71 @@ footer {
     text-align: center !important;
   }
 }
+    .services-accordion {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 8px;
+}
+.accordion-item {
+  border-radius: 12px;
+  margin-bottom: 18px;
+  background: #181818;
+  box-shadow: 0 2px 12px 0 #0f0830;
+  overflow: hidden;
+}
+.accordion-header {
+  width: 100%;
+  background: linear-gradient(90deg,#0f0 60%,#1de9b6 100%);
+  color: #101820;
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding: 18px 24px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s, color 0.2s;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.accordion-header::after {
+  content: "▼";
+  font-size: 1.1em;
+  transition: transform 0.3s;
+}
+.accordion-item.open .accordion-header::after {
+  transform: rotate(-180deg);
+}
+.accordion-content {
+  display: none;
+  padding: 18px 24px 10px 24px;
+  animation: fadeInAccordion 0.3s;
+  background: #181818;
+}
+@keyframes fadeInAccordion {
+  from { opacity: 0; transform: translateY(-10px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+.accordion-item.open .accordion-content {
+  display: block;
+}
+.accordion-content .service-card {
+  margin-bottom: 16px;
+}
+.accordion-content .service-card:last-child {
+  margin-bottom: 0;
+}
+@media (max-width: 700px) {
+  .services-accordion {
+    padding: 0 2px;
+  }
+  .accordion-header, .accordion-content {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
   </style>
   <!-- TypeIt per testo digitato -->
   <script src="https://cdn.jsdelivr.net/npm/typeit@8.7.1/dist/typeit.min.js"></script>
@@ -464,74 +529,30 @@ footer {
       </div>
     </section>
     <!-- Prodotti/Servizi Section -->
-    <section class="services" id="prodotti-section">
-  <div class="service-group">
-    <h4>Hardware</h4>
-    <div class="service-card">
-      <div class="service-card-inner">
-        <h3>Computer & Workstation</h3>
-        <p>Soluzioni affidabili per ogni esigenza professionale.</p>
-      </div>
-    </div>
-    <div class="service-card">
-      <div class="service-card-inner">
-        <h3>Server</h3>
-        <p>Server performanti per aziende di ogni dimensione.</p>
-      </div>
-    </div>
-    <div class="service-card">
-      <div class="service-card-inner">
-        <h3>Notebook</h3>
-        <p>Portatili per lavoro, studio e mobilità.</p>
-      </div>
-    </div>
-    <div class="service-card">
-      <div class="service-card-inner">
-        <h3>Stampanti, Plotter e Fotocopiatrici</h3>
-        <p>Dispositivi di stampa e copia per ogni ambiente.</p>
-      </div>
+   <section class="services-accordion" id="prodotti-section">
+  <div class="accordion-item">
+    <button class="accordion-header">Hardware</button>
+    <div class="accordion-content">
+      <div class="service-card"><div class="service-card-inner"><h3>Computer & Workstation</h3><p>Soluzioni affidabili per ogni esigenza professionale.</p></div></div>
+      <div class="service-card"><div class="service-card-inner"><h3>Server</h3><p>Server performanti per aziende di ogni dimensione.</p></div></div>
+      <div class="service-card"><div class="service-card-inner"><h3>Notebook</h3><p>Portatili per lavoro, studio e mobilità.</p></div></div>
+      <div class="service-card"><div class="service-card-inner"><h3>Stampanti, Plotter e Fotocopiatrici</h3><p>Dispositivi di stampa e copia per ogni ambiente.</p></div></div>
     </div>
   </div>
-  <div class="service-group">
-    <h4>Servizi IT</h4>
-    <div class="service-card">
-      <div class="service-card-inner">
-        <h3>Vendita e assistenza</h3>
-        <p>Supporto tecnico e commerciale dedicato.</p>
-      </div>
-    </div>
-    <div class="service-card">
-      <div class="service-card-inner">
-        <h3>Noleggio hardware</h3>
-        <p>Soluzioni flessibili per il noleggio di dispositivi IT.</p>
-      </div>
-    </div>
-    <div class="service-card">
-      <div class="service-card-inner">
-        <h3>Installazione firewall</h3>
-        <p>Sicurezza informatica per la tua rete aziendale.</p>
-      </div>
-    </div>
-    <div class="service-card">
-      <div class="service-card-inner">
-        <h3>Consulenza informatica</h3>
-        <p>Consulenza su misura per ottimizzare la tua infrastruttura IT.</p>
-      </div>
+  <div class="accordion-item">
+    <button class="accordion-header">Servizi IT</button>
+    <div class="accordion-content">
+      <div class="service-card"><div class="service-card-inner"><h3>Vendita e assistenza</h3><p>Supporto tecnico e commerciale dedicato.</p></div></div>
+      <div class="service-card"><div class="service-card-inner"><h3>Noleggio hardware</h3><p>Soluzioni flessibili per il noleggio di dispositivi IT.</p></div></div>
+      <div class="service-card"><div class="service-card-inner"><h3>Installazione firewall</h3><p>Sicurezza informatica per la tua rete aziendale.</p></div></div>
+      <div class="service-card"><div class="service-card-inner"><h3>Consulenza informatica</h3><p>Consulenza su misura per ottimizzare la tua infrastruttura IT.</p></div></div>
     </div>
   </div>
-  <div class="service-group">
-    <h4>Web & Soluzioni</h4>
-    <div class="service-card">
-      <div class="service-card-inner">
-        <h3>Soluzioni IT per privati e aziende</h3>
-        <p>Progetti personalizzati per ogni esigenza.</p>
-      </div>
-    </div>
-    <div class="service-card">
-      <div class="service-card-inner">
-        <h3>Realizzazione Siti Web</h3>
-        <p>Creiamo siti web professionali su misura per la tua azienda o attività, con attenzione a design, sicurezza e visibilità online.</p>
-      </div>
+  <div class="accordion-item">
+    <button class="accordion-header">Web & Soluzioni</button>
+    <div class="accordion-content">
+      <div class="service-card"><div class="service-card-inner"><h3>Soluzioni IT per privati e aziende</h3><p>Progetti personalizzati per ogni esigenza.</p></div></div>
+      <div class="service-card"><div class="service-card-inner"><h3>Realizzazione Siti Web</h3><p>Creiamo siti web professionali su misura per la tua azienda o attività, con attenzione a design, sicurezza e visibilità online.</p></div></div>
     </div>
   </div>
 </section>
@@ -661,6 +682,17 @@ footer {
         document.getElementById('success-message').style.display = 'none';
       }, 4000);
     }
+    document.querySelectorAll('.accordion-header').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const item = btn.parentElement;
+    // Chiudi tutti gli altri
+    document.querySelectorAll('.accordion-item').forEach(i => {
+      if(i !== item) i.classList.remove('open');
+    });
+    // Toggle questo
+    item.classList.toggle('open');
+  });
+});
   </script>
   <script src="https://cdn.jsdelivr.net/npm/typeit@8.7.1/dist/typeit.min.js"></script>
 </body>
