@@ -140,13 +140,13 @@
       color:#0f0; margin-top:0; font-size:1.25rem; margin-bottom:10px;
       text-shadow:0 0 8px #0f08;
     }
-    .service-card p { color:#b2ffb2; font-size:1.05rem; }
-    .service-card:hover .service-card-inner {
-      transform: rotateY(8deg) scale(1.04);
-      box-shadow:0 8px 32px 0 #1de9b6cc;
-      border-color:#0f0;
-      background:linear-gradient(120deg,#181818 60%,#1de9b6 200%);
-    }
+     .service-card:hover .service-card-inner,
+  .service-card.simple:hover {
+    transform: scale(1.04);
+    box-shadow: 0 8px 32px 0 #1de9b6cc;
+    border-color: #0f0;
+    background: linear-gradient(120deg,#181818 60%,#1de9b6 200%);
+  }
     .service-card-inner::after {
       content:""; position:absolute; top:-40px; right:-40px; width:80px; height:80px;
       background:radial-gradient(circle,#0f0 0%,transparent 70%);
