@@ -20,6 +20,20 @@
       background: linear-gradient(90deg,#0f0 60%,#1de9b6 100%);
       z-index: 9999; transition: width 0.2s;
     }
+    @media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 8px;
+  }
+  .logo {
+    margin-bottom: 12px; /* aggiunge spazio sotto il logo */
+  }
+  nav {
+    gap: 10px;
+    margin-top: 8px;
+  }
+}
     header {
       display:flex; align-items:center; justify-content:space-between;
       padding:16px 24px; background:#101820; position:sticky; top:0; z-index:10;
@@ -53,6 +67,20 @@
       background: linear-gradient(120deg,#0f0 0%,#101820 60%,#1de9b6 100%);
       animation: fadeIn 1.2s;
     }
+    #hero-title {
+  background: linear-gradient(90deg,#0f0 60%,#1de9b6 100%);
+  color: #101820;
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 16px #000, 0 0 8px #0f08;
+  padding: 12px 24px;
+  border-radius: 14px;
+  display: inline-block;
+  margin-bottom: 22px;
+  animation: fadeInUp 1.2s;
+  min-height: 3.5em;
+}
     .hero-overlay {
       position: absolute;
       inset: 0;
