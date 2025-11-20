@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -431,99 +432,6 @@ footer {
     text-align: center !important;
   }
 }
-    .main-nav {
-  display: flex;
-  gap: 22px;
-  align-items: center;
-  position: relative;
-  z-index: 100;
-}
-.main-nav > a, .dropbtn {
-  color: #0f0;
-  background: none;
-  border: none;
-  font-weight: 600;
-  font-size: 1.08rem;
-  padding: 6px 14px;
-  border-radius: 6px;
-  transition: background 0.2s, color 0.2s;
-  cursor: pointer;
-  font-family: inherit;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.main-nav > a:hover, .dropbtn:hover, .dropbtn.active {
-  background: linear-gradient(90deg,#0f0 60%,#1de9b6 100%);
-  color: #101820;
-  box-shadow: 0 2px 8px 0 #0f08;
-}
-.arrow {
-  font-size: 0.8em;
-  transition: transform 0.2s;
-}
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-.dropdown-content {
-  display: none;
-  position: absolute;
-  left: 0;
-  top: 110%;
-  background: #181818;
-  min-width: 220px;
-  box-shadow: 0 8px 16px 0 #0f0830;
-  z-index: 200;
-  border-radius: 8px;
-  animation: fadeInMenu 0.25s;
-  overflow: hidden;
-}
-@keyframes fadeInMenu {
-  from { opacity: 0; transform: translateY(10px);}
-  to { opacity: 1; transform: translateY(0);}
-}
-.dropdown-content a {
-  color: #1de9b6;
-  padding: 12px 20px;
-  text-decoration: none;
-  display: block;
-  border-radius: 0;
-  transition: background 0.2s, color 0.2s;
-  font-size: 1rem;
-}
-.dropdown-content a:hover {
-  background: #0f0;
-  color: #101820;
-}
-.dropdown:hover .dropdown-content,
-.dropdown:focus-within .dropdown-content {
-  display: block;
-}
-.dropdown:hover .dropbtn .arrow,
-.dropdown:focus-within .dropbtn .arrow,
-.dropbtn.active .arrow {
-  transform: rotate(180deg);
-}
-
-/* Mobile: menu a tendina apre al click */
-@media (max-width: 900px) {
-  .main-nav {
-    flex-direction: column;
-    gap: 8px;
-    align-items: flex-start;
-  }
-  .dropdown-content {
-    position: static;
-    box-shadow: none;
-    min-width: 100%;
-    border-radius: 0 0 8px 8px;
-    animation: none;
-  }
-  .dropdown-content a {
-    padding-left: 28px;
-  }
-}
   </style>
   <!-- TypeIt per testo digitato -->
   <script src="https://cdn.jsdelivr.net/npm/typeit@8.7.1/dist/typeit.min.js"></script>
@@ -556,35 +464,6 @@ footer {
       </div>
     </section>
     <!-- Prodotti/Servizi Section -->
-    <nav class="main-nav">
-  <a href="index.html">Home</a>
-  <div class="dropdown">
-    <button class="dropbtn" aria-haspopup="true" aria-expanded="false">Hardware <span class="arrow">&#9662;</span></button>
-    <div class="dropdown-content">
-      <a href="hardware.html#workstation">Computer & Workstation</a>
-      <a href="hardware.html#server">Server</a>
-      <a href="hardware.html#notebook">Notebook</a>
-      <a href="hardware.html#stampanti">Stampanti, Plotter e Fotocopiatrici</a>
-    </div>
-  </div>
-  <div class="dropdown">
-    <button class="dropbtn" aria-haspopup="true" aria-expanded="false">Servizi IT <span class="arrow">&#9662;</span></button>
-    <div class="dropdown-content">
-      <a href="servizi-it.html#vendita">Vendita e assistenza</a>
-      <a href="servizi-it.html#noleggio">Noleggio hardware</a>
-      <a href="servizi-it.html#firewall">Installazione firewall</a>
-      <a href="servizi-it.html#consulenza">Consulenza informatica</a>
-    </div>
-  </div>
-  <div class="dropdown">
-    <button class="dropbtn" aria-haspopup="true" aria-expanded="false">Web & Soluzioni <span class="arrow">&#9662;</span></button>
-    <div class="dropdown-content">
-      <a href="web-soluzioni.html#soluzioni">Soluzioni IT per privati e aziende</a>
-      <a href="web-soluzioni.html#sitiweb">Realizzazione Siti Web</a>
-    </div>
-  </div>
-  <a href="#contatti">Contatti</a>
-</nav>
     <section class="services" id="prodotti-section">
   <div class="service-group">
     <h4>Hardware</h4>
@@ -782,34 +661,6 @@ footer {
         document.getElementById('success-message').style.display = 'none';
       }, 4000);
     }
-    document.querySelectorAll('.dropbtn').forEach(btn => {
-  btn.addEventListener('click', function(e) {
-    // Su mobile: toggle il menu
-    if (window.innerWidth <= 900) {
-      e.preventDefault();
-      const dropdown = btn.parentElement;
-      const content = dropdown.querySelector('.dropdown-content');
-      const isOpen = content.style.display === 'block';
-      // Chiudi tutti gli altri
-      document.querySelectorAll('.dropdown-content').forEach(dc => dc.style.display = 'none');
-      document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
-      if (!isOpen) {
-        content.style.display = 'block';
-        btn.classList.add('active');
-      }
-    }
-  });
-});
-
-// Chiudi il menu a tendina se clicchi fuori (mobile)
-document.addEventListener('click', function(e) {
-  if (window.innerWidth <= 900) {
-    if (!e.target.closest('.dropdown')) {
-      document.querySelectorAll('.dropdown-content').forEach(dc => dc.style.display = 'none');
-      document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
-    }
-  }
-});
   </script>
   <script src="https://cdn.jsdelivr.net/npm/typeit@8.7.1/dist/typeit.min.js"></script>
 </body>
