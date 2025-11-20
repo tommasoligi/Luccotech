@@ -431,19 +431,28 @@ footer {
     align-items: center !important;
     text-align: center !important;
   }
-}
-    .services-accordion {
-  max-width: 900px;
-  margin: 40px auto;
+.services-accordion {
+  max-width: 500px;
+  margin: 48px auto 0 auto;
   padding: 0 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
 }
+
 .accordion-item {
-  border-radius: 12px;
-  margin-bottom: 18px;
+  width: 100%;
+  border-radius: 16px;
+  margin-bottom: 0;
   background: #181818;
   box-shadow: 0 2px 12px 0 #0f0830;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
 .accordion-header {
   width: 100%;
   background: linear-gradient(90deg,#0f0 60%,#1de9b6 100%);
@@ -471,30 +480,77 @@ footer {
 }
 .accordion-content {
   display: none;
+  width: 100%;
   padding: 18px 24px 10px 24px;
   animation: fadeInAccordion 0.3s;
   background: #181818;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
 }
 @keyframes fadeInAccordion {
   from { opacity: 0; transform: translateY(-10px);}
   to { opacity: 1; transform: translateY(0);}
 }
 .accordion-item.open .accordion-content {
-  display: block;
+  display: flex;
 }
-.accordion-content .service-card {
-  margin-bottom: 16px;
+
+.service-card.simple {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  box-shadow: 0 2px 12px 0 #0f0830;
+  border-radius: 12px;
+  background: linear-gradient(120deg,#181818 80%,#0f0 200%);
+  border: 1.5px solid #1de9b6;
+  transition: box-shadow 0.2s, border-color 0.2s;
 }
-.accordion-content .service-card:last-child {
+.service-card.simple .service-card-inner {
+  padding: 20px 18px 16px 18px;
+  background: none;
+  border: none;
+  box-shadow: none;
+  min-height: unset;
+  transition: none;
+  cursor: default;
+  position: static;
+  overflow: visible;
+}
+.service-card.simple h3 {
+  color: #0f0;
+  margin-top: 0;
+  font-size: 1.15rem;
+  margin-bottom: 10px;
+  text-shadow: 0 0 8px #0f08;
+}
+.service-card.simple p {
+  color: #b2ffb2;
+  font-size: 1.05rem;
   margin-bottom: 0;
 }
+.service-card.simple:hover,
+.service-card.simple:focus-within {
+  box-shadow: 0 4px 24px 0 #1de9b6cc;
+  border-color: #0f0;
+}
+.service-card.simple .service-card-inner::after {
+  display: none;
+}
+
 @media (max-width: 700px) {
   .services-accordion {
+    max-width: 100%;
     padding: 0 2px;
+    gap: 16px;
   }
   .accordion-header, .accordion-content {
     padding-left: 10px;
     padding-right: 10px;
+  }
+  .service-card.simple {
+    max-width: 100%;
   }
 }
   </style>
@@ -529,30 +585,80 @@ footer {
       </div>
     </section>
     <!-- Prodotti/Servizi Section -->
-   <section class="services-accordion" id="prodotti-section">
+  <section class="services-accordion" id="prodotti-section">
   <div class="accordion-item">
     <button class="accordion-header">Hardware</button>
     <div class="accordion-content">
-      <div class="service-card"><div class="service-card-inner"><h3>Computer & Workstation</h3><p>Soluzioni affidabili per ogni esigenza professionale.</p></div></div>
-      <div class="service-card"><div class="service-card-inner"><h3>Server</h3><p>Server performanti per aziende di ogni dimensione.</p></div></div>
-      <div class="service-card"><div class="service-card-inner"><h3>Notebook</h3><p>Portatili per lavoro, studio e mobilità.</p></div></div>
-      <div class="service-card"><div class="service-card-inner"><h3>Stampanti, Plotter e Fotocopiatrici</h3><p>Dispositivi di stampa e copia per ogni ambiente.</p></div></div>
+      <div class="service-card simple">
+        <div class="service-card-inner">
+          <h3>Computer & Workstation</h3>
+          <p>Soluzioni affidabili per ogni esigenza professionale.</p>
+        </div>
+      </div>
+      <div class="service-card simple">
+        <div class="service-card-inner">
+          <h3>Server</h3>
+          <p>Server performanti per aziende di ogni dimensione.</p>
+        </div>
+      </div>
+      <div class="service-card simple">
+        <div class="service-card-inner">
+          <h3>Notebook</h3>
+          <p>Portatili per lavoro, studio e mobilità.</p>
+        </div>
+      </div>
+      <div class="service-card simple">
+        <div class="service-card-inner">
+          <h3>Stampanti, Plotter e Fotocopiatrici</h3>
+          <p>Dispositivi di stampa e copia per ogni ambiente.</p>
+        </div>
+      </div>
     </div>
   </div>
   <div class="accordion-item">
     <button class="accordion-header">Servizi IT</button>
     <div class="accordion-content">
-      <div class="service-card"><div class="service-card-inner"><h3>Vendita e assistenza</h3><p>Supporto tecnico e commerciale dedicato.</p></div></div>
-      <div class="service-card"><div class="service-card-inner"><h3>Noleggio hardware</h3><p>Soluzioni flessibili per il noleggio di dispositivi IT.</p></div></div>
-      <div class="service-card"><div class="service-card-inner"><h3>Installazione firewall</h3><p>Sicurezza informatica per la tua rete aziendale.</p></div></div>
-      <div class="service-card"><div class="service-card-inner"><h3>Consulenza informatica</h3><p>Consulenza su misura per ottimizzare la tua infrastruttura IT.</p></div></div>
+      <div class="service-card simple">
+        <div class="service-card-inner">
+          <h3>Vendita e assistenza</h3>
+          <p>Supporto tecnico e commerciale dedicato.</p>
+        </div>
+      </div>
+      <div class="service-card simple">
+        <div class="service-card-inner">
+          <h3>Noleggio hardware</h3>
+          <p>Soluzioni flessibili per il noleggio di dispositivi IT.</p>
+        </div>
+      </div>
+      <div class="service-card simple">
+        <div class="service-card-inner">
+          <h3>Installazione firewall</h3>
+          <p>Sicurezza informatica per la tua rete aziendale.</p>
+        </div>
+      </div>
+      <div class="service-card simple">
+        <div class="service-card-inner">
+          <h3>Consulenza informatica</h3>
+          <p>Consulenza su misura per ottimizzare la tua infrastruttura IT.</p>
+        </div>
+      </div>
     </div>
   </div>
   <div class="accordion-item">
     <button class="accordion-header">Web & Soluzioni</button>
     <div class="accordion-content">
-      <div class="service-card"><div class="service-card-inner"><h3>Soluzioni IT per privati e aziende</h3><p>Progetti personalizzati per ogni esigenza.</p></div></div>
-      <div class="service-card"><div class="service-card-inner"><h3>Realizzazione Siti Web</h3><p>Creiamo siti web professionali su misura per la tua azienda o attività, con attenzione a design, sicurezza e visibilità online.</p></div></div>
+      <div class="service-card simple">
+        <div class="service-card-inner">
+          <h3>Soluzioni IT per privati e aziende</h3>
+          <p>Progetti personalizzati per ogni esigenza.</p>
+        </div>
+      </div>
+      <div class="service-card simple">
+        <div class="service-card-inner">
+          <h3>Realizzazione Siti Web</h3>
+          <p>Creiamo siti web professionali su misura per la tua azienda o attività, con attenzione a design, sicurezza e visibilità online.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
