@@ -190,9 +190,15 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 12px;
+  gap: 4px;
 }
-
+.footer-piva {
+  display: block;
+  margin: 2px 0 8px 0; /* poco spazio sopra e sotto */
+  color: #b2ffb2;
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
+}
 .orari-footer {
   width: 100%;
   border-collapse: collapse;
@@ -220,6 +226,8 @@ footer {
 }
 .footer-map iframe {
   width: 100%;
+  min-width: 220px;
+  max-width: 100%;
   height: 180px;
   border-radius: 8px;
   border: none;
@@ -229,7 +237,7 @@ footer {
 .footer-social {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 20px; /* aumentato da 8px */
   text-align: right;
   min-width: 120px;
   flex: 1 1 120px;
@@ -527,7 +535,7 @@ footer {
     <!-- Colonna sinistra: Orari e Partita IVA -->
     <div class="footer-info">
       <strong>Lucco Tech di Matteo Luchena</strong><br>
-      Pesaro (PU)<br>
+<span class="footer-piva">Partita IVA: 02828830410</span>
       <table class="orari-footer">
         <tr><td>Lunedì</td><td>09–13, 15–19</td></tr>
         <tr><td>Martedì</td><td>09–13, 15–19</td></tr>
