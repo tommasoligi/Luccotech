@@ -4,16 +4,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lucco Tech</title>
+  <!-- AOS Animate On Scroll -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
   <style>
     html { scroll-behavior: smooth; }
     body {
       margin:0; font-family:'Segoe UI',Arial,sans-serif; background:#101820; color:#eee;
       min-height:100vh; overflow-x:hidden;
     }
+    .scroll-progress {
+      position: fixed; top: 0; left: 0; width: 0; height: 4px;
+      background: linear-gradient(90deg,#0f0 60%,#1de9b6 100%);
+      z-index: 9999; transition: width 0.2s;
+    }
+    @media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 8px;
+  }
+  .logo {
+    margin-bottom: 12px; /* aggiunge spazio sotto il logo */
+  }
+  nav {
+    gap: 10px;
+    margin-top: 8px;
+  }
+}
     header {
       display:flex; align-items:center; justify-content:space-between;
       padding:16px 24px; background:#101820; position:sticky; top:0; z-index:10;
       box-shadow:0 2px 12px 0 rgba(0,0,0,0.12);
+      animation:fadeInDown 0.7s;
+    }
+    @keyframes fadeInDown {
+      from { opacity:0; transform:translateY(-30px);}
+      to { opacity:1; transform:translateY(0);}
     }
     .logo { display:flex; align-items:center; }
     .logo img { height:44px; margin-right:12px; filter:drop-shadow(0 0 6px #0f0); }
@@ -29,28 +55,26 @@
       color:#101820;
       box-shadow:0 2px 8px 0 #0f08;
     }
-    @media (max-width: 600px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 12px 8px;
-      }
-      .logo {
-        margin-bottom: 12px;
-      }
-      nav {
-        gap: 10px;
-        margin-top: 8px;
-      }
-    }
-
     .hero {
       position: relative;
-      min-height: 60vh;
+      min-height: 80vh;
       display: flex;
       align-items: center;
       justify-content: center;
       background: linear-gradient(120deg,#0f0 0%,#101820 60%,#1de9b6 100%);
+      animation: fadeIn 1.2s;
+    }
+
+    .hero-desc {
+      color: #b2ffb2;
+      font-size: 1.35rem;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.7;
+      text-shadow: 0 2px 8px #000;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 0;
     }
     .hero-overlay {
       position: absolute;
@@ -73,307 +97,767 @@
       margin-bottom: 22px;
       text-shadow: 0 2px 16px #000, 0 0 8px #0f08;
       letter-spacing: 1px;
+      animation: fadeInUp 1.2s;
       min-height: 3.5em;
     }
-    .hero-desc {
-      color: #b2ffb2;
+    .hero p {
+      color: #fff;
       font-size: 1.35rem;
       max-width: 700px;
       margin: 0 auto;
+      animation: fadeInUp 1.5s;
       line-height: 1.7;
       text-shadow: 0 2px 8px #000;
-      font-weight: 600;
-      display: inline-block;
-      margin-bottom: 0;
     }
-
-    /* Accordion servizi */
-    .services-accordion {
-      max-width: 500px;
-      margin: 48px auto 0 auto;
-      padding: 0 8px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 24px;
+    @keyframes fadeIn {
+      from { opacity:0;}
+      to { opacity:1;}
     }
-    .accordion-item {
-      width: 100%;
-      border-radius: 16px;
-      background: #181818;
-      box-shadow: 0 2px 12px 0 #0f0830;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    @keyframes fadeInUp {
+      from { opacity:0; transform:translateY(30px);}
+      to { opacity:1; transform:translateY(0);}
     }
-    .accordion-header {
-      width: 100%;
-      background: linear-gradient(90deg,#0f0 60%,#1de9b6 100%);
-      color: #101820;
-      font-size: 1.25rem;
-      font-weight: 700;
-      padding: 18px 24px;
-      border: none;
-      outline: none;
-      cursor: pointer;
-      text-align: left;
-      transition: background 0.2s, color 0.2s;
-      letter-spacing: 1px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    .services {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:28px; padding:40px 16px;
+      max-width:1200px; margin:0 auto;
     }
-    .accordion-header::after {
-      content: "▼";
-      font-size: 1.1em;
-      transition: transform 0.3s;
-    }
-    .accordion-item.open .accordion-header::after {
-      transform: rotate(-180deg);
-    }
-    .accordion-content {
-      display: none;
-      width: 100%;
-      padding: 18px 24px 10px 24px;
-      animation: fadeInAccordion 0.3s;
-      background: #181818;
-      flex-direction: column;
-      gap: 16px;
-      align-items: center;
-    }
-    @keyframes fadeInAccordion {
-      from { opacity: 0; transform: translateY(-10px);}
-      to { opacity: 1; transform: translateY(0);}
-    }
-    .accordion-item.open .accordion-content {
-      display: flex;
-    }
-    .service-card.simple {
-      width: 100%;
-      max-width: 420px;
-      min-height: 170px;
-      height: 170px;
-      margin: 0 auto;
-      box-shadow: 0 2px 12px 0 #0f0830;
-      border-radius: 12px;
-      background: linear-gradient(120deg,#181818 80%,#0f0 200%);
-      border: 1.5px solid #1de9b6;
-      transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
-      display: flex;
-      flex-direction: column;
-      justify-content: stretch;
-    }
-    .service-card.simple .service-card-inner {
-      padding: 20px 18px 16px 18px;
-      background: none;
-      border: none;
-      box-shadow: none;
-      min-height: 120px;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .service-card.simple h3 {
-      color: #0f0;
-      margin-top: 0;
-      font-size: 1.15rem;
-      margin-bottom: 10px;
-      text-shadow: 0 0 8px #0f08;
-    }
-    .service-card.simple p {
-      color: #b2ffb2;
-      font-size: 1.05rem;
-      margin-bottom: 0;
-    }
-    .service-card.simple:hover,
-    .service-card.simple:focus-within {
-      transform: scale(1.04);
-      box-shadow: 0 8px 32px 0 #1de9b6cc;
-      border-color: #0f0;
-      background: linear-gradient(120deg,#181818 60%,#1de9b6 200%);
-    }
-    .service-card.simple .service-card-inner::after {
-      display: none;
-    }
-    @media (max-width: 700px) {
-      .services-accordion {
-        max-width: 100%;
-        padding: 0 2px;
-        gap: 16px;
-      }
-      .accordion-header, .accordion-content {
-        padding-left: 10px;
-        padding-right: 10px;
-      }
-      .service-card.simple {
-        max-width: 100%;
-      }
-    }
-
-    /* Bottone torna su */
-    .back-to-top {
-      position: fixed;
-      right: 24px;
-      bottom: 24px;
-      z-index: 100;
-      background: linear-gradient(90deg,#0f0 60%,#1de9b6 100%);
-      color: #101820;
-      border: none;
-      border-radius: 50%;
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      box-shadow: 0 2px 12px #0f08;
-      cursor: pointer;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s, transform 0.2s;
-    }
-    .back-to-top.visible {
+    .service-card {
+      perspective: 600px;
+      transition: box-shadow 0.3s;
       opacity: 1;
-      pointer-events: auto;
-      transform: scale(1.08);
     }
-    .back-to-top:hover {
-      background: linear-gradient(90deg,#1de9b6 60%,#0f0 100%);
-      transform: scale(1.15);
+    .service-card-inner {
+      background:linear-gradient(120deg,#181818 80%,#0f0 200%);
+      border-radius:14px; padding:28px 20px 24px 20px; border:1.5px solid #1de9b6;
+      box-shadow:0 4px 24px 0 #0f0830;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s, background 0.3s;
+      will-change: transform;
+      cursor:pointer;
+      position:relative;
+      overflow:hidden;
     }
+    .service-card h3 {
+      color:#0f0; margin-top:0; font-size:1.25rem; margin-bottom:10px;
+      text-shadow:0 0 8px #0f08;
+    }
+     .service-card:hover .service-card-inner,
+  .service-card.simple:hover {
+    transform: scale(1.04);
+    box-shadow: 0 8px 32px 0 #1de9b6cc;
+    border-color: #0f0;
+    background: linear-gradient(120deg,#181818 60%,#1de9b6 200%);
+  }
+    .service-card-inner::after {
+      content:""; position:absolute; top:-40px; right:-40px; width:80px; height:80px;
+      background:radial-gradient(circle,#0f0 0%,transparent 70%);
+      opacity:0.12; pointer-events:none;
+      transition:opacity 0.3s;
+    }
+    .service-card:hover .service-card-inner::after { opacity:0.22; }
+    .contact-section {
+      max-width:420px; margin:40px auto 0 auto; background:#181818; border-radius:14px;
+      padding:28px 24px; border:1.5px solid #1de9b6;
+      box-shadow:0 4px 24px 0 #0f0830;
+      animation:fadeInUp 1.2s;
+    }
+    .contact-section h2 { color:#0f0; margin-top:0; }
+    .contact-section label { display:block; margin:12px 0 4px 0; color:#eee; }
+    .contact-section input, .contact-section textarea {
+      width:100%; padding:10px; border-radius:6px; border:1px solid #222; background:#222; color:#eee; margin-bottom:14px;
+      font-size:1rem; transition:border 0.2s;
+    }
+    .contact-section input:focus, .contact-section textarea:focus { border:1.5px solid #0f0; outline:none; }
+    .contact-section button {
+      background:linear-gradient(90deg,#0f0 60%,#1de9b6 100%);
+      color:#101820; border:none; padding:12px 28px; border-radius:6px; font-weight:bold; cursor:pointer;
+      font-size:1.08rem; box-shadow:0 2px 8px 0 #0f08; transition:background 0.2s,transform 0.2s;
+    }
+    .contact-section button:hover { background:linear-gradient(90deg,#1de9b6 60%,#0f0 100%); transform:scale(1.04);}
+    .success-message {
+      color:#0f0; margin-top:10px;
+      animation: fadeInUp 0.7s;
+      font-weight: bold;
+      font-size: 1.1em;
+      text-align: center;
+    }
+    /* FOOTER */
+footer {
+  background: linear-gradient(90deg, #101820 80%, #1de9b6 120%);
+  color: #b2ffb2;
+  text-align: center;
+  padding: 18px 8px 0 8px;
+  font-size: 1.05rem;
+  margin-top: 32px;
+  border-top: 1.5px solid #1de9b6;
+  letter-spacing: 0.5px;
+  box-shadow: 0 -2px 12px 0 #0f0830;
+  transition: background 0.4s;
+}
+
+.footer-main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto 8px auto;
+  padding: 0 8px;
+}
+
+.footer-info {
+  font-size: 1.05rem;
+  color: #b2ffb2;
+  line-height: 1.7;
+  text-align: left;
+  min-width: 220px;
+  flex: 1 1 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 4px;
+}
+.footer-piva {
+  display: block;
+  margin: 2px 0 2px 0; /* poco spazio sopra e sotto */
+  color: #b2ffb2;
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
+}
+.orari-footer {
+  width: 100%;
+  border-collapse: collapse;
+  color: #b2ffb2;
+  font-size: 1.05rem;
+  margin-top: 8px;
+}
+.orari-footer td {
+  padding: 2px 8px 2px 0;
+}
+.orari-footer tr td:last-child {
+  text-align: right;
+  color: #1de9b6;
+  font-weight: 600;
+}
+
+.footer-map {
+  flex: 1 1 320px;
+  min-width: 250px;
+  max-width: 400px;
+  margin: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer-map iframe {
+  width: 100%;
+  min-width: 220px;
+  max-width: 500px;
+  height: 400px;
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 2px 10px rgba(21, 223, 55, 0.3);
+}
+
+.footer-social {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* aumentato da 8px */
+  text-align: right;
+  min-width: 120px;
+  flex: 1 1 120px;
+  align-items: flex-end;
+  justify-content: flex-start;
+  margin-top: 0;
+}
+.footer-social-link {
+  color: #1de9b6;
+  font-weight: 600;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s, transform 0.2s;
+  font-size: 1.08rem;
+}
+.footer-social-link:hover {
+  color: #0f0;
+  text-decoration: underline;
+  transform: translateY(-2px) scale(1.08);
+}
+.footer-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s, transform 0.2s;
+}
+.footer-social-link:hover .footer-icon {
+  color: #0f0;
+  transform: scale(1.2) rotate(-8deg);
+}
+
+.footer-copy {
+  color: #b2ffb2;
+  text-align: center;
+  font-size: 1.05rem;
+  margin-top: 8px;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 900px) {
+  .footer-main {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+  }
+  .footer-map {
+    max-width: 100%;
+    margin: 0 0 12px 0;
+  }
+  .footer-social {
+    align-items: flex-start;
+    text-align: left;
+    margin-top: 8px;
+  }
+}
+@media (max-width:600px) {
+  .footer-main { gap: 10px; }
+  .footer-map iframe { height: 140px; }
+}
+
+    .services {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 16px;
+}
+
+.service-group {
+  flex: 1 1 320px;
+  min-width: 300px;
+  max-width: 370px;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.service-group h4 {
+  color: #1de9b6;
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  text-align: left;
+  font-weight: 700;
+}
+
+.service-card {
+  /* Rimuovi il margin-bottom se usi gap */
+}
+
+.service-card-inner {
+  min-height: 170px; /* Altezza minima uguale per tutte */
+  background: linear-gradient(120deg,#181818 80%,#0f0 200%);
+  border-radius: 14px;
+  padding: 28px 20px 24px 20px;
+  border: 1.5px solid #1de9b6;
+  box-shadow: 0 4px 24px 0 #0f0830;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s, background 0.3s;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card-inner h3 {
+  color: #0f0;
+  margin-top: 0;
+  font-size: 1.15rem;
+  margin-bottom: 10px;
+  text-shadow: 0 0 8px #0f08;
+}
+
+.service-card-inner p {
+  color: #b2ffb2;
+  font-size: 1.05rem;
+}
+
+.service-card-inner::after {
+  content: "";
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle,#0f0 0%,transparent 70%);
+  opacity: 0.12;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.service-card:hover .service-card-inner {
+  transform: rotateY(8deg) scale(1.04);
+  box-shadow: 0 8px 32px 0 #1de9b6cc;
+  border-color: #0f0;
+  background: linear-gradient(120deg,#181818 60%,#1de9b6 200%);
+}
+
+.service-card:hover .service-card-inner::after {
+  opacity: 0.22;
+}
+
+@media (max-width: 900px) {
+  .services {
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px 4px;
+  }
+  .service-group {
+    max-width: 100%;
+    min-width: 0;
+  }
+}
+    .orari-footer {
+  width: 100%;
+  border-collapse: collapse;
+  color: #b2ffb2;
+  font-size: 1.05rem;
+  margin-top: 8px;
+}
+.orari-footer td {
+  padding: 2px 8px 2px 0;
+}
+.orari-footer tr td:last-child {
+  text-align: right;
+  color: #1de9b6;
+  font-weight: 600;
+}
+    @media (max-width: 900px) {
+      .websoluzioni-group {
+        align-items: center;
+      }
+      .websoluzioni-group h4 {
+        text-align: center;
+        width: 100%;
+      }
+    }
+  .service-group h4 {
+    text-align: center;
+    width: 100%;
+  }
+  /* Centra i social nel footer */
+  .footer-social {
+    align-items: center !important;
+    text-align: center !important;
+  }
+.services-accordion {
+  max-width: 500px;
+  margin: 48px auto 0 auto;
+  padding: 0 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.accordion-item {
+  width: 100%;
+  border-radius: 16px;
+  margin-bottom: 0;
+  background: #181818;
+  box-shadow: 0 2px 12px 0 #0f0830;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.accordion-header {
+  width: 100%;
+  background: linear-gradient(90deg,#0f0 60%,#1de9b6 100%);
+  color: #101820;
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding: 18px 24px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s, color 0.2s;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.accordion-header::after {
+  content: "▼";
+  font-size: 1.1em;
+  transition: transform 0.3s;
+}
+.accordion-item.open .accordion-header::after {
+  transform: rotate(-180deg);
+}
+.accordion-content {
+  display: none;
+  width: 100%;
+  padding: 18px 24px 10px 24px;
+  animation: fadeInAccordion 0.3s;
+  background: #181818;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+@keyframes fadeInAccordion {
+  from { opacity: 0; transform: translateY(-10px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+.accordion-item.open .accordion-content {
+  display: flex;
+}
+
+.service-card.simple {
+  width: 100%;
+  max-width: 420px;
+  min-height: 170px;
+  height: 170px;
+  margin: 0 auto;
+  box-shadow: 0 2px 12px 0 #0f0830;
+  border-radius: 12px;
+  background: linear-gradient(120deg,#181818 80%,#0f0 200%);
+  border: 1.5px solid #1de9b6;
+  transition: box-shadow 0.2s, border-color 0.2s;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+}
+.service-card.simple .service-card-inner {
+  padding: 20px 18px 16px 18px;
+  background: none;
+  border: none;
+  box-shadow: none;
+  min-height: 120px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.service-card.simple h3 {
+  color: #0f0;
+  margin-top: 0;
+  font-size: 1.15rem;
+  margin-bottom: 10px;
+  text-shadow: 0 0 8px #0f08;
+}
+.service-card.simple p {
+  color: #b2ffb2;
+  font-size: 1.05rem;
+  margin-bottom: 0;
+}
+.service-card.simple:hover,
+.service-card.simple:focus-within {
+  box-shadow: 0 4px 24px 0 #1de9b6cc;
+  border-color: #0f0;
+}
+.service-card.simple .service-card-inner::after {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .services-accordion {
+    max-width: 100%;
+    padding: 0 2px;
+    gap: 16px;
+  }
+  .accordion-header, .accordion-content {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .service-card.simple {
+    max-width: 100%;
+  }
+}
+    .back-to-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 100;
+  background: linear-gradient(90deg,#0f0 60%,#1de9b6 100%);
+  color: #101820;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  box-shadow: 0 2px 12px #0f08;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.2s;
+}
+.back-to-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1.08);
+}
+.back-to-top:hover {
+  background: linear-gradient(90deg,#1de9b6 60%,#0f0 100%);
+  transform: scale(1.15);
+}
   </style>
+  <!-- TypeIt per testo digitato -->
+  <script src="https://cdn.jsdelivr.net/npm/typeit@8.7.1/dist/typeit.min.js"></script>
 </head>
 <body>
+  <div class="scroll-progress" id="scrollProgress"></div>
   <header>
     <div class="logo">
       <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/3a626c88-1343-4d2d-9eff-9889d9319895" alt="Lucco Tech Logo">
       <span>Lucco Tech</span>
     </div>
     <nav>
-      <a href="#" class="active">Home</a>
-      <a href="#prodotti-section">Prodotti</a>
-      <a href="#contatti">Contatti</a>
+      <a href="#" id="nav-home" class="active">Home</a>
+      <a href="#prodotti" id="nav-prodotti">Prodotti</a>
+      <a href="#contatti" id="nav-contatti">Contatti</a>
     </nav>
   </header>
-  <main>
-    <section class="hero">
+  <main id="main-content">
+    <!-- Home Section -->
+    <section class="hero" id="home-section" data-aos="fade-up">
       <div class="hero-overlay">
         <div class="hero-content">
-          <h1>Soluzioni IT per privati e aziende</h1>
+          <h1 id="hero-title"></h1>
           <p class="hero-desc">
-            Computer & Workstation, Server, Notebook, Stampanti, Plotter e Fotocopiatrici,<br>
-            Vendita e assistenza, Noleggio hardware, Installazione firewall,<br>
-            Consulenza informatica, Realizzazione Siti Web su misura.
+  Computer & Workstation, Server, Notebook, Stampanti, Plotter e Fotocopiatrici,<br>
+  Vendita e assistenza, Noleggio hardware, Installazione firewall,<br>
+  Consulenza informatica, Realizzazione Siti Web su misura.
           </p>
         </div>
       </div>
     </section>
-
-    <!-- Accordion servizi -->
-    <section class="services-accordion" id="prodotti-section">
-      <div class="accordion-item">
-        <button class="accordion-header">Hardware</button>
-        <div class="accordion-content">
-          <div class="service-card simple">
-            <div class="service-card-inner">
-              <h3>Computer & Workstation</h3>
-              <p>Soluzioni affidabili per ogni esigenza professionale.</p>
-            </div>
-          </div>
-          <div class="service-card simple">
-            <div class="service-card-inner">
-              <h3>Server</h3>
-              <p>Server performanti per aziende di ogni dimensione.</p>
-            </div>
-          </div>
-          <div class="service-card simple">
-            <div class="service-card-inner">
-              <h3>Notebook</h3>
-              <p>Portatili per lavoro, studio e mobilità.</p>
-            </div>
-          </div>
-          <div class="service-card simple">
-            <div class="service-card-inner">
-              <h3>Stampanti, Plotter e Fotocopiatrici</h3>
-              <p>Dispositivi di stampa e copia per ogni ambiente.</p>
-            </div>
-          </div>
+    <!-- Prodotti/Servizi Section -->
+<section class="services-accordion" id="prodotti-section">
+  <div class="accordion-item">
+    <button class="accordion-header">Hardware</button>
+    <div class="accordion-content">
+      <div class="service-card simple">
+        <div class="service-card-inner">
+          <h3>Computer & Workstation</h3>
+          <p>Soluzioni affidabili per ogni esigenza professionale.</p>
         </div>
       </div>
-      <div class="accordion-item">
-        <button class="accordion-header">Servizi IT</button>
-        <div class="accordion-content">
-          <div class="service-card simple">
-            <div class="service-card-inner">
-              <h3>Vendita e assistenza</h3>
-              <p>Supporto tecnico e commerciale dedicato.</p>
-            </div>
-          </div>
-          <div class="service-card simple">
-            <div class="service-card-inner">
-              <h3>Noleggio hardware</h3>
-              <p>Soluzioni flessibili per il noleggio di dispositivi IT.</p>
-            </div>
-          </div>
-          <div class="service-card simple">
-            <div class="service-card-inner">
-              <h3>Installazione firewall</h3>
-              <p>Sicurezza informatica per la tua rete aziendale.</p>
-            </div>
-          </div>
-          <div class="service-card simple">
-            <div class="service-card-inner">
-              <h3>Consulenza informatica</h3>
-              <p>Consulenza su misura per ottimizzare la tua infrastruttura IT.</p>
-            </div>
-          </div>
+      <div class="service-card simple">
+        <div class="service-card-inner">
+          <h3>Server</h3>
+          <p>Server performanti per aziende di ogni dimensione.</p>
         </div>
       </div>
-      <div class="accordion-item">
-        <button class="accordion-header">Web & Soluzioni</button>
-        <div class="accordion-content">
-          <div class="service-card simple">
-            <div class="service-card-inner">
-              <h3>Soluzioni IT per privati e aziende</h3>
-              <p>Progetti personalizzati per ogni esigenza.</p>
-            </div>
-          </div>
-          <div class="service-card simple">
-            <div class="service-card-inner">
-              <h3>Realizzazione Siti Web</h3>
-              <p>Creiamo siti web professionali su misura per la tua azienda o attività, con attenzione a design, sicurezza e visibilità online.</p>
-            </div>
-          </div>
+      <div class="service-card simple">
+        <div class="service-card-inner">
+          <h3>Notebook</h3>
+          <p>Portatili per lavoro, studio e mobilità.</p>
         </div>
       </div>
+      <div class="service-card simple">
+        <div class="service-card-inner">
+          <h3>Stampanti, Plotter e Fotocopiatrici</h3>
+          <p>Dispositivi di stampa e copia per ogni ambiente.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <button class="accordion-header">Servizi IT</button>
+    <div class="accordion-content">
+      <div class="service-card simple">
+        <div class="service-card-inner">
+          <h3>Vendita e assistenza</h3>
+          <p>Supporto tecnico e commerciale dedicato.</p>
+        </div>
+      </div>
+      <div class="service-card simple">
+        <div class="service-card-inner">
+          <h3>Noleggio hardware</h3>
+          <p>Soluzioni flessibili per il noleggio di dispositivi IT.</p>
+        </div>
+      </div>
+      <div class="service-card simple">
+        <div class="service-card-inner">
+          <h3>Installazione firewall</h3>
+          <p>Sicurezza informatica per la tua rete aziendale.</p>
+        </div>
+      </div>
+      <div class="service-card simple">
+        <div class="service-card-inner">
+          <h3>Consulenza informatica</h3>
+          <p>Consulenza su misura per ottimizzare la tua infrastruttura IT.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <button class="accordion-header">Web & Soluzioni</button>
+    <div class="accordion-content">
+      <div class="service-card simple">
+        <div class="service-card-inner">
+          <h3>Soluzioni IT per privati e aziende</h3>
+          <p>Progetti personalizzati per ogni esigenza.</p>
+        </div>
+      </div>
+      <div class="service-card simple">
+        <div class="service-card-inner">
+          <h3>Realizzazione Siti Web</h3>
+          <p>Creiamo siti web professionali su misura per la tua azienda o attività, con attenzione a design, sicurezza e visibilità online.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+    <!-- Contatti Section -->
+    <section class="contact-section" id="contatti-section" data-aos="fade-up">
+      <h2>Contattaci</h2>
+      <form id="contact-form" autocomplete="off">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome" required>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+        <label for="messaggio">Messaggio</label>
+        <textarea id="messaggio" name="messaggio" rows="4" required></textarea>
+        <button type="submit">Invia</button>
+        <div class="success-message" id="success-message" style="display:none;">Messaggio inviato! Ti risponderemo al più presto.</div>
+      </form>
     </section>
   </main>
-
-  <!-- Bottone torna su -->
+  <footer>
+  <div class="footer-main">
+    <!-- Colonna sinistra: Orari e Partita IVA -->
+    <div class="footer-info">
+      <strong>Lucco Tech di Matteo Luchena</strong>
+<span class="footer-piva">Partita IVA: 02828830410</span>
+      <table class="orari-footer">
+        <tr><td>Lunedì</td><td>09–13, 15–19</td></tr>
+        <tr><td>Martedì</td><td>09–13, 15–19</td></tr>
+        <tr><td>Mercoledì</td><td>09–13, 15–19</td></tr>
+        <tr><td>Giovedì</td><td>09–13, 15–19</td></tr>
+        <tr><td>Venerdì</td><td>09–13, 15–19</td></tr>
+        <tr><td>Sabato</td><td>Chiuso</td></tr>
+        <tr><td>Domenica</td><td>Chiuso</td></tr>
+      </table>
+    </div>
+    <!-- Colonna centrale: Mappa -->
+    <div class="footer-map">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2880.0636212274877!2d12.983376015440019!3d43.90862275879196!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132cc0c391ed7711%3A0xefa5ef33a0bd4c3!2sVia%20Mancini%20145%2C%2061122%20Pesaro%20PU%2C%20Italia!5e0!3m2!1sit!2sit!4v1697733900000!5m2!1sit!2sit"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <!-- Colonna destra: Social -->
+    <div class="footer-social">
+      <a href="https://www.facebook.com/profile.php?id=61564843845548&locale=it_IT" target="_blank" class="footer-social-link" title="Facebook">
+        <span class="footer-icon">
+          <!-- Facebook SVG -->
+          <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.408 24 22.674V1.326C24 .592 23.406 0 22.675 0"/></svg>
+        </span>
+        Facebook
+      </a>
+      <a href="https://www.instagram.com/luccotech/" target="_blank" class="footer-social-link" title="Instagram">
+        <span class="footer-icon">
+          <!-- Instagram SVG -->
+          <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.974.974 1.246 2.241 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.974.974-2.241 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.308-.974-.974-1.246-2.241-1.308-3.608C2.175 15.647 2.163 15.267 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608.974-.974 2.241-1.246 3.608-1.308C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.013 7.052.072 5.771.131 4.659.363 3.678 1.344c-.98.98-1.213 2.092-1.272 3.373C2.013 8.332 2 8.741 2 12c0 3.259.013 3.668.072 4.948.059 1.281.292 2.393 1.272 3.373.98.98 2.092 1.213 3.373 1.272C8.332 23.987 8.741 24 12 24s3.668-.013 4.948-.072c1.281-.059 2.393-.292 3.373-1.272.98-.98 1.213-2.092 1.272-3.373.059-1.28.072-1.689.072-4.948 0-3.259-.013-3.668-.072-4.948-.059-1.281-.292-2.393-1.272-3.373-.98-.98-2.092-1.213-3.373-1.272C15.668.013 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm6.406-11.845a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg>
+        </span>
+        Instagram
+      </a>
+      <a href="https://wa.me/3383428716" target="_blank" class="footer-social-link" title="WhatsApp">
+        <span class="footer-icon">
+          <!-- WhatsApp SVG -->
+          <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M20.52 3.48A11.78 11.78 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.16 1.6 5.97L0 24l6.22-1.63A11.93 11.93 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.18-1.24-6.17-3.48-8.52zM12 22c-1.85 0-3.66-.5-5.22-1.44l-.37-.22-3.69.97.99-3.59-.24-.37A9.93 9.93 0 0 1 2 12c0-5.52 4.48-10 10-10s10 4.48 10 10-4.48 10-10 10zm5.2-7.6c-.28-.14-1.65-.81-1.9-.9-.25-.09-.43-.14-.61.14-.18.28-.7.9-.86 1.08-.16.18-.32.2-.6.07-.28-.14-1.18-.44-2.25-1.4-.83-.74-1.39-1.65-1.55-1.93-.16-.28-.02-.43.12-.57.13-.13.28-.34.42-.51.14-.17.18-.29.28-.48.09-.19.05-.36-.02-.5-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47-.16-.01-.35-.01-.54-.01-.19 0-.5.07-.76.34-.26.27-1 1-.97 2.43.03 1.43 1.03 2.81 1.18 3.01.15.2 2.03 3.1 4.93 4.23.69.3 1.23.48 1.65.61.69.22 1.32.19 1.81.12.55-.08 1.65-.67 1.89-1.32.23-.65.23-1.2.16-1.32-.07-.12-.25-.19-.53-.33z"/></svg>
+        </span>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+  <div class="footer-copy">
+    &copy; 2025 Lucco Tech. Tutti i diritti riservati.
+  </div>
+</footer>
   <button class="back-to-top" id="backToTop" title="Torna su">&#8679;</button>
-
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
-    // Accordion funzionante
-    document.querySelectorAll('.accordion-header').forEach(btn => {
-      btn.addEventListener('click', function() {
-        const item = btn.parentElement;
-        const isOpen = item.classList.contains('open');
-        // Chiudi tutti
-        document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
-        // Se non era aperto, apri questo
-        if (!isOpen) item.classList.add('open');
-      });
+    // Scroll progress bar
+    window.addEventListener('scroll', function() {
+      const scrollProgress = document.getElementById('scrollProgress');
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrolled = (scrollTop / docHeight) * 100;
+      scrollProgress.style.width = scrolled + "%";
     });
 
-    // Bottone torna su dinamico
-    const backToTop = document.getElementById('backToTop');
-    window.addEventListener('scroll', function() {
-      if(window.scrollY > 300) backToTop.classList.add('visible');
-      else backToTop.classList.remove('visible');
+    // Bottone Torna su
+      const backToTop = document.getElementById('backToTop');
+      window.addEventListener('scroll', function() {
+        if(window.scrollY > 300) backToTop.classList.add('visible');
+        else backToTop.classList.remove('visible');
+      });
+      backToTop.onclick = () => window.scrollTo({top:0,behavior:'smooth'});
+
+    // Navigazione tra sezioni
+    function showSection(section) {
+      document.getElementById('home-section').style.display = section === 'home' ? 'block' : 'none';
+      document.getElementById('prodotti-section').style.display = section === 'prodotti' ? 'grid' : 'none';
+      document.getElementById('contatti-section').style.display = section === 'contatti' ? 'block' : 'none';
+      document.getElementById('nav-home').classList.toggle('active', section === 'home');
+      document.getElementById('nav-prodotti').classList.toggle('active', section === 'prodotti');
+      document.getElementById('nav-contatti').classList.toggle('active', section === 'contatti');
+      window.scrollTo(0,0);
+    }
+    document.getElementById('nav-home').onclick = function(e){ e.preventDefault(); showSection('home'); }
+    document.getElementById('nav-prodotti').onclick = function(e){ e.preventDefault(); showSection('prodotti'); }
+    document.getElementById('nav-contatti').onclick = function(e){ e.preventDefault(); showSection('contatti'); }
+    showSection('home');
+
+    // TypeIt per testo digitato nella hero
+    document.addEventListener('DOMContentLoaded', function() {
+      if(window.TypeIt){
+        new TypeIt("#hero-title", {
+          strings: "Soluzioni IT per privati e aziende",
+          speed: 60,
+          waitUntilVisible: true,
+          cursor: false
+        }).go();
+      } else {
+        document.getElementById('hero-title').textContent = "Soluzioni IT per privati e aziende";
+      }
     });
-    backToTop.onclick = () => window.scrollTo({top:0,behavior:'smooth'});
+
+    // AOS Animate On Scroll
+    AOS.init({ once:true, duration:700 });
+
+    // Form di contatto (solo simulazione)
+    document.getElementById('contact-form').onsubmit = function(e){
+      e.preventDefault();
+      document.getElementById('success-message').style.display = 'block';
+      this.reset();
+      setTimeout(function(){
+        document.getElementById('success-message').style.display = 'none';
+      }, 4000);
+    }
+document.querySelectorAll('.accordion-header').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+    // Chiudi tutti
+    document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
+    // Se non era aperto, apri questo
+    if (!isOpen) item.classList.add('open');
+  });
+});
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/typeit@8.7.1/dist/typeit.min.js"></script>
+  <button class="back-to-top" id="backToTop" title="Torna su">&#8679;</button>
 </body>
 </html>
